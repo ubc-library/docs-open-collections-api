@@ -1,0 +1,25 @@
+{
+  "from": 0,
+  "size": 10,
+  "body": {
+    "sort": {
+      "_score": {
+        "order": "desc"
+      }
+    },
+    "fields": [
+      "creator",
+      "description",
+      "subject",
+      "title",
+      "fileFormat"
+    ],
+    "query": {
+      "term": {
+        "fileFormat.raw": "image/jpeg"
+      }
+    }
+  },
+  "index": "oc",
+  "type": "object"
+}

@@ -1,0 +1,158 @@
+<div id="tutorials-basic-search" class="box">
+    <p class="note">Note: All of the tutorials below use the public Open Collections API key to make requests, you are free to also use the same key however by <a href="{{base_url}}/docs#register-api-key">registering for your own API key</a> will increase the amount of requests you can make per minute from 10 to 200</p>
+    <h3>Basic search</h3>
+    <h4>Install Postman</h4>
+
+    <p>If you are unfamilar with making cURL requests, the easiest way to get started is to download the Chrome browser
+        extension <a href="https://www.getpostman.com" link-out>Postman</a>. If you are using Firefox we suggest using
+        the plugin <a href="https://addons.mozilla.org/en-US/firefox/addon/restclient/" link-out>RestClient</a> which is
+        similar enough for you to be able to follow along.</p>
+
+    <h4>Request Type</h4>
+
+    <p> The first thing you will need to do is set the 'Request Type' to a POST request as indicated in the image
+        below:</p>
+    <img src="{{base_url}}/img/tutorials/basic_search/pick-post.jpg" alt="Pick POST as request type"/>
+
+    <h4>API URL</h4>
+
+    <p>Next you will need to fill out the API URL to <a href="{{data.api_url}}/search" link-out>{{data.api_url}}/search?api_key={{data.public_api_key}}</a> as shown
+        in the following image:</p>
+    <img src="{{base_url}}/img/tutorials/basic_search/api-url.jpg" alt="Pick POST as request type"/>
+
+    <h4>Body Type</h4>
+    <p>Next you are going to want to click the 'Body' tab and set the 'Body' to 'raw'</p>
+    <img src="{{base_url}}/img/tutorials/basic_search/body-raw.jpg" alt="Pick POST as request type"/>
+
+    <h4>Request Body</h4>
+    <p>Lastly, copy the following JSON into the 'Body' field and press 'Send'</p>
+    <?prettify?>
+    <pre class="prettyprint lang-json json" id="tutorial_basic_search">
+
+    </pre>
+    <img src="{{base_url}}/img/tutorials/basic_search/request-body.jpg" alt="Pick POST as request type"/>
+    <h4>Result</h4>
+    <p>After pressing 'Send' you will see the ten results of your search as seen below:</p>
+    <img src="{{base_url}}/img/tutorials/basic_search/result.jpg" alt="Pick POST as request type"/>
+
+</div>
+<div id="tutorials-search-by-field" class="box">
+    <h3>Search by field</h3>
+    <p>To search by a specific field you need to switch from using the query string syntax to the query match syntax. We also can ask the API to only return specific fields that we request, allowing for more useful results as shown below.</p>
+    <h4>Request Body</h4>
+    <?prettify?>
+    <pre class="prettyprint lang-json json" id="tutorial_search_by_field">
+
+    </pre>
+    <h4>Instructions</h4>
+    <p>As before setup a POST request in Postman using the above request body as 'Body Raw'</p>
+    <img src="{{base_url}}/img/tutorials/search_by_field/example.jpg" alt="Pick POST as request type"/>
+    <h4>Response</h4>
+    <div class="collapsible">
+        <div class="collapsible_action" data-boxid="collapsible_box_4">Collapse -</div>
+        <div class="collapsible_box" id="collapsible_box_4">
+            <?prettify?>
+            <pre class="prettyprint lang-json json" id="tutorial_search_by_field_response">
+
+            </pre>
+        </div>
+    </div>
+</div>
+<!--<div id="tutorials-search-by-genre" class="box">-->
+    <!--<h3>Search by genre</h3>-->
+    <!--<p>Coming soon..</p>-->
+    <!--&lt;!&ndash;<?prettify?>&ndash;&gt;-->
+    <!--&lt;!&ndash;<pre class="prettyprint lang-json json" id="tutorial_search_by_genre">&ndash;&gt;-->
+
+    <!--&lt;!&ndash;</pre>&ndash;&gt;-->
+<!--</div>-->
+<div id="tutorials-all-collection-items" class="box">
+    <h3>Get all items from a collection</h3>
+    <p>Coming soon..</p>
+</div>
+<div id="tutorials-harvest-full-text" class="box">
+    <h3>Harvest full text of all items in a collection</h3>
+    <p class="note">Note: not all collections have full text, we've specifically chosen one of the smaller collections with full text to show you how to programmatically loop through items and export the full text.</p>
+    <label for="languageSwitcher1">Language:</label>
+    <select id="languageSwitcher1" class="language_switch">
+        <option value="js">JS</option>
+        <option value="php" selected>PHP</option>
+        <option value="python">Python</option>
+    </select>
+    <div class="languageWindow js">
+        <pre class="prettyprint lang-js js">
+            Coming soon..
+        </pre>
+    </div>
+    <div class="languageWindow php">
+        <pre class="prettyprint lang-php php">
+    // Collection we want to harvest
+    $collection = 'darwin';
+    // Setup variables
+    $limit = 100;
+    $itemIds = [];
+    $items = [];
+
+    //Simple curl function to keep code DRY, will exit on error.
+    function curlGet($url) {
+        try {
+            $ch = curl_init();
+            curl_setopt( $ch, CURLOPT_URL, $url );
+            curl_setopt( $ch, CURLOPT_SSLVERSION, CURL_SSLVERSION_TLSv1 );
+            curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1 );
+            $curlOutput = json_decode( curl_exec( $ch ) );
+            curl_close( $ch );
+        } catch ( Exception $e ) {
+            var_dump($e);
+            exit;
+        }
+        return $curlOutput;
+    }
+    // First we need to find out how many items are in the collection
+    $curlOutput = curlGet('https://oc-index.library.ubc.ca/collections/'.$collection);
+
+    // Now we have the item count, figure out the page count and create an offset of 0
+    $itemCount = $curlOutput->data->items;
+    $pageCount = ceil($itemCount/$limit);
+    $offset = 0;
+
+    // Loop through the pages and extract the item ids into the $itemIds array.
+    while($pageCount > 0) {
+        $curlOutput = curlGet('https://oc-index.library.ubc.ca/collections/'.$collection.'/items?offset='.$offset.'&limit='.$limit);
+        foreach($curlOutput->data as $item) {
+            $itemIds[] = $item->_id;
+        }
+        $pageCount--;
+        $offset = $offset + 100;
+    }
+
+    // Loop through the item ids and extract metadata into the $items array.
+    foreach($itemIds as $itemId) {
+        $curlOutput = curlGet('https://oc-index.library.ubc.ca/collections/'.$collection.'/items/'.$itemId);
+        $item = $curlOutput->data;
+        $items[] = array(
+            "id" => $itemId,
+            "title" => $item->Title[0]->value,
+            "description" => $item->Description[0]->value,
+            "fullText" => $item->FullText[0]->value
+        );
+    }
+
+    // We now have the items stored in $items, uncomment below to check it out.
+    // var_dump($items);
+
+    // For more fun lets add them into a CSV file. ( You could have file permission problems attempting this )
+    $fp = fopen($collection.'.csv', 'w');
+    fputcsv($fp, ['ID', 'TITLE', 'DESCRIPTION', 'FULL TEXT']);
+    foreach ($items as $item) {
+        fputcsv($fp, $item);
+    }
+    fclose($fp);
+        </pre>
+    </div>
+    <div class="languageWindow python">
+        <pre class="prettyprint lang-python python">
+            Coming soon..
+        </pre>
+    </div>
+</div>

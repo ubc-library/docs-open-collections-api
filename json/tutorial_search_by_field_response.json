@@ -1,0 +1,268 @@
+{
+  "http_code": 200,
+  "endpoint": "POST: /search",
+  "api_code": 3000,
+  "api_text": "Endpoint: /search | API Version: 1",
+  "user_ip": "127.0.0.1",
+  "data": {
+    "data": {
+      "took": 134,
+      "timed_out": false,
+      "_shards": {
+        "total": 712,
+        "successful": 712,
+        "failed": 0
+      },
+      "hits": {
+        "total": 13961,
+        "max_score": 5.7309213,
+        "hits": [
+          {
+            "_index": "cdm.langmann-2015-09-16",
+            "_type": "object",
+            "_id": "00.00.0000.0057198",
+            "_score": 5.7309213,
+            "fields": {
+              "description": [
+                "An album of photographs from in and around the townsite of Walhachin B.C., now abandoned. It includes an informal census with all the residents names and occupation. The focus is on scenery and development, with a particular emphasis on agriculture."
+              ],
+              "creator": [
+                "The British Columbia Development Association Limited"
+              ],
+              "title": [
+                "Walhachin, B.C. 1910"
+              ],
+              "subject": [
+                "Agriculture",
+                "Cities & Towns"
+              ],
+              "fileFormat": [
+                "image/jpeg"
+              ]
+            }
+          },
+          {
+            "_index": "cdm.langmann-2015-09-16",
+            "_type": "object",
+            "_id": "00.00.0000.0057239",
+            "_score": 5.7309213,
+            "fields": {
+              "description": [
+                "An album of photos en route to the Klondike, including one image of a weather map. The binding is almost entirely gone, but the photos are still in fairly good shape."
+              ],
+              "creator": [
+                "Unknown"
+              ],
+              "title": [
+                "[En Route to the Klondike 1898-1901]"
+              ],
+              "subject": [
+                "Cities & Towns",
+                "Landscapes (Representations)"
+              ],
+              "fileFormat": [
+                "image/jpeg"
+              ]
+            }
+          },
+          {
+            "_index": "cdm.langmann-2015-09-16",
+            "_type": "object",
+            "_id": "00.00.0000.0057712",
+            "_score": 5.7309213,
+            "fields": {
+              "description": [
+                "An assemblage of photographs, likely packaged together by a photograph dealer, of early photos throughout British Columbia. Including Vancouver, Nanaimo, Esquimalt, and Victoria."
+              ],
+              "creator": [
+                "Unknown"
+              ],
+              "title": [
+                "[Assembly of Early British Columbia Photographs]"
+              ],
+              "subject": [
+                "Cities & Towns",
+                "Portraits"
+              ],
+              "fileFormat": [
+                "image/jpeg"
+              ]
+            }
+          },
+          {
+            "_index": "cdm.langmann-2015-09-16",
+            "_type": "object",
+            "_id": "00.00.0000.0058063",
+            "_score": 5.7309213,
+            "fields": {
+              "description": [
+                "An album of photographs from throughout the United States and Canada, as well as two photos from Gibraltar, United Kingdom, by a number of different photographers; likely assembled as a souvenir from travel. Housed in a red souvenir album, the photos and book are still in quite good condition."
+              ],
+              "creator": [
+                "Unknown"
+              ],
+              "title": [
+                "[Photos of Gibraltar, Canada, and the United States]"
+              ],
+              "subject": [
+                "Cities & Towns",
+                "Landscapes (Representations)",
+                "Travel"
+              ],
+              "fileFormat": [
+                "image/jpeg"
+              ]
+            }
+          },
+          {
+            "_index": "cdm.langmann-2015-09-16",
+            "_type": "object",
+            "_id": "00.00.0000.0058436",
+            "_score": 5.7309213,
+            "fields": {
+              "description": [
+                "A photo album from a man named Robert Sinclair. The photos are predominantly of family snapshots, and images from around their rural home in British Columbia. There are also some of farming and logging, and a few of different cities and locales throughout British Columbia. Some of the photos are captioned, but none are dated. The album is secured with a metal clasp and is in quite good condition, as are the photographs."
+              ],
+              "creator": [
+                "Sinclair, Robert"
+              ],
+              "title": [
+                "[Robert Sinclair`s Photo Album]"
+              ],
+              "subject": [
+                "Landscapes (Representations)",
+                "Portraits"
+              ],
+              "fileFormat": [
+                "image/jpeg"
+              ]
+            }
+          },
+          {
+            "_index": "cdm.langmann-2015-09-16",
+            "_type": "object",
+            "_id": "00.00.0000.0058575",
+            "_score": 5.7309213,
+            "fields": {
+              "description": [
+                "An album of photographs taken by an unknown photographer, believed to be of their family and travels. Also included are some additional photographs, postcards, and a typed text of a speech on the subject of female suffrage that was delivered in Seattle. The location where most of the photographs were taken is unknown, but appear to be throughout the United States and Canada, with a few depicting Quesnel, British Columbia, which may have been home to the family. The slim album and the photographs are in good condition."
+              ],
+              "creator": [
+                "Unknown"
+              ],
+              "title": [
+                "Scenes By The Way"
+              ],
+              "subject": [
+                "Cities & Towns",
+                "Landscapes (Representations)",
+                "Portraits",
+                "Travel"
+              ],
+              "fileFormat": [
+                "image/jpeg"
+              ]
+            }
+          },
+          {
+            "_index": "cdm.langmann-2015-09-16",
+            "_type": "object",
+            "_id": "00.00.0000.0058773",
+            "_score": 5.7309213,
+            "fields": {
+              "description": [
+                "Photographs of the Sunnyside and other Canneries, as well as boats out fishing, fish being processed, and general views out on the water."
+              ],
+              "creator": [
+                "Unknown"
+              ],
+              "title": [
+                "[Sunnyside Cannery Skeena River]"
+              ],
+              "subject": [
+                "Bodies Of Water",
+                "Boats"
+              ],
+              "fileFormat": [
+                "image/jpeg"
+              ]
+            }
+          },
+          {
+            "_index": "cdm.langmann-2015-09-16",
+            "_type": "object",
+            "_id": "00.00.0000.0058832",
+            "_score": 5.7309213,
+            "fields": {
+              "description": [
+                "An album from an unknown family living in British Columbia, consisting mainly of family photos throughout BC, as well as a few purchased souvenir photographs from Europe. Many of the photos are captioned and/or dated, and they are not in specific chronological order. The photos are glued into the album, and many are fading badly. The orientation of the album switches after the first few pages, and the rest of the images are upside down."
+              ],
+              "creator": [
+                "Unknown"
+              ],
+              "title": [
+                "[Family Album of BC and Europe]"
+              ],
+              "subject": [
+                "Landscapes (Representations)",
+                "Portraits",
+                "Travel"
+              ],
+              "fileFormat": [
+                "image/jpeg"
+              ]
+            }
+          },
+          {
+            "_index": "cdm.langmann-2015-09-16",
+            "_type": "object",
+            "_id": "00.00.0000.0059013",
+            "_score": 5.7309213,
+            "fields": {
+              "description": [
+                "An album of photographs taken by an English visitor mostly of various places and views throughout Vancouver, plus a few of Niagara Falls. The album has been disassembled and is housed in a box. There are 67 original albumen prints in plastic sleeves, with silver gelatin copies and their negatives attached to each one. There are also seven modern reproductions."
+              ],
+              "creator": [
+                "Unknown"
+              ],
+              "title": [
+                "[Early Vancouver]"
+              ],
+              "subject": [
+                "Cities & Towns",
+                "Landscapes (Representations)"
+              ],
+              "fileFormat": [
+                "image/jpeg"
+              ]
+            }
+          },
+          {
+            "_index": "cdm.langmann-2015-09-16",
+            "_type": "object",
+            "_id": "00.00.0000.0058044",
+            "_score": 5.643973,
+            "fields": {
+              "description": [
+                "A photo album from a British Columbian woman known only as K.B.S. Predominantly family snapshots, as well as photos of travels throughout British Columbia, including Salt Spring Island, Shawnigan Lake, and Victoria. The cover of the leather album is adorned with an image of an Aboriginal chief and a simple landscape. Photos and album are still in good condition. The first large number of images are captioned, but towards the end most are not."
+              ],
+              "creator": [
+                "Unknown"
+              ],
+              "title": [
+                "Snapshots Victoria B.C."
+              ],
+              "subject": [
+                "Portraits",
+                "Landscapes (Representations)"
+              ],
+              "fileFormat": [
+                "image/jpeg"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+}

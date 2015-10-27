@@ -1,0 +1,272 @@
+{
+  "http_code": 200,
+  "endpoint": "GET: /collections/darwin/items/00.00.0000.0056802",
+  "api_code": 3000,
+  "api_text": "Output based on Accept Header: */* | API Version: 1",
+  "user_ip": "127.0.0.1",
+  "data": {
+    "Collection": [
+      {
+        "label": "Is Part Of",
+        "value": "The Darwin-Burdon-Sanderson Letters",
+        "attrs": {
+          "lang": "en",
+          "ns": "http://purl.org/dc/terms/isPartOf",
+          "classmap": "dpla:SourceResource",
+          "property": "dcterms:isPartOf"
+        },
+        "iri": "http://purl.org/dc/terms/isPartOf",
+        "explain": "A Dublin Core Terms Property; A related resource in which the described resource is physically or logically included."
+      }
+    ],
+    "Creator": [
+      {
+        "label": "Creator",
+        "value": "Darwin, Charles, 1809-1882",
+        "attrs": {
+          "lang": "en",
+          "ns": "http://purl.org/dc/terms/creator",
+          "classmap": "dpla:SourceResource",
+          "property": "dcterms:creator"
+        },
+        "iri": "http://purl.org/dc/terms/creator",
+        "explain": "A Dublin Core Terms Property; An entity primarily responsible for making the resource.; Examples of a Contributor include a person, an organization, or a service."
+      }
+    ],
+    "DateAvailable": [
+      {
+        "label": "Date Available",
+        "value": "2006-12-18",
+        "attrs": {
+          "lang": "en",
+          "ns": "http://purl.org/dc/terms/issued",
+          "classmap": "edm:WebResource",
+          "property": "dcterms:issued"
+        },
+        "iri": "http://purl.org/dc/terms/issued",
+        "explain": "A Dublin Core Terms Property; Date of formal issuance (e.g., publication) of the resource."
+      }
+    ],
+    "DateCreated": [
+      {
+        "label": "Date Created",
+        "value": "1875-07-16",
+        "attrs": {
+          "lang": "en",
+          "ns": "http://purl.org/dc/terms/created",
+          "classmap": "oc:SourceResource",
+          "property": "dcterms:created"
+        },
+        "iri": "http://purl.org/dc/terms/created",
+        "explain": "A Dublin Core Terms Property; Date of creation of the resource."
+      }
+    ],
+    "Description": [
+      {
+        "label": "Description",
+        "value": "Charles Darwin, \"Down\" to John Burdon-Sanderson. Had read Burdon-Sanderson's latest essays; will modify some of the passages in the chapters on digestion; is worried about what critics will say about it. A.L.S. 2 p.",
+        "attrs": {
+          "lang": "en",
+          "ns": "http://purl.org/dc/terms/description",
+          "classmap": "dpla:SourceResource",
+          "property": "dcterms:description"
+        },
+        "iri": "http://purl.org/dc/terms/description",
+        "explain": "A Dublin Core Terms Property; An account of the resource.; Description may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource."
+      }
+    ],
+    "Extent": [
+      {
+        "label": "Extent",
+        "value": "5 unnumbered pages",
+        "attrs": {
+          "lang": "en",
+          "ns": "http://purl.org/dc/terms/extent",
+          "classmap": "dpla:SourceResource",
+          "property": "dcterms:extent"
+        },
+        "iri": "http://purl.org/dc/terms/extent",
+        "explain": "A Dublin Core Terms Property; The size or duration of the resource."
+      }
+    ],
+    "FileFormat": [
+      {
+        "label": "Format",
+        "value": "image/jpeg",
+        "attrs": {
+          "lang": "en",
+          "ns": "http://purl.org/dc/elements/1.1/format",
+          "classmap": "edm:WebResource",
+          "property": "dc:format"
+        },
+        "iri": "http://purl.org/dc/elements/1.1/format",
+        "explain": "A Dublin Core Elements Property; The file format, physical medium, or dimensions of the resource.; Examples of dimensions include size and duration. Recommended best practice is to use a controlled vocabulary such as the list of Internet Media Types [MIME]."
+      }
+    ],
+    "FullText": [
+      {
+        "label": "Fulltext",
+        "value": "Down,  Beckenham, Kent.  Railway Station,  Orpington, S.E.R.    July 16 75    My dear Sanderson  I have read your essays with the greatest interest & am much obliged to Mrs. Sanderson for having sent them. I had no idea that so much light had been thrown on the subject. If Dr. Bastian knew of these articles he has not written quite fairly in his recent articles. I wish your essay had been longer & that you had said somethingabout Mr. Lister's observations. I remember being astonished at the cool way in which Dr. Bastian spoke of life being always destroyed at 150 degrees, with organisms living in hot springs staring him in the face. Some little time ago Mr. Simon sent me the last Report, & your statements about contagion deeply interested me. By the way, if you see Mr. Simon, & can remember it, will youthank him for me, I was so busy at the time that I did not write. Having been in correspondence with Paget lately on another subject, I mentioned to him an analogy which has struck me much, now that we know that sheep pox is fungoid; & this analogy pleased him. It is that of fairy rings which are believed to spread from a centre & when they intersect, the intersecting portion dies out, as the mycelium cannot grow where it has grown,during previous years. So again I have never seen a ring within a ring this seems to me parallel case to a man commonly having the smallpox only once. I imagine that in both cases the mycelium must consume all the matter on which it can subsist.  With respect to Drosera I will modify the passages about globulin etc, but I thought I had made it pretty clear that these substances were not pure; & they to a certain extent answered my purpose in showing that they were acted on in the same manner by Drosera and gastric juice. I did not know Dr. Moore was dead otherwise I should have spoken more plainly. I do not know anyone who could attempt to separate the ferment, & I suppose there would be the greatest difficulty in doing so,as all my observations lead me to believe that the ferment is not secreted until some nitrogenous matter has been absorbed; & would not the addition of such matter make the separation extremely difficult? I feel a good deal of anxiety to know what competent critics may say about my chapter on digestion.    My dear Sanderson  Yours very sincerely    Ch. Darwin",
+        "attrs": {
+          "ns": "http://www.w3.org/2009/08/skos-reference/skos.html#note",
+          "classmap": "oc:AnnotationContainer"
+        },
+        "iri": "http://www.w3.org/2009/08/skos-reference/skos.html#note",
+        "explain": "Simple Knowledge Organisation System; Notes are used to provide information relating to SKOS concepts. There is no restriction on the nature of this information, e.g., it could be plain text, hypertext, or an image; it could be a definition, information about the scope of a concept, editorial information, or any other type of information."
+      }
+    ],
+    "Genre": [
+      {
+        "label": "Genre",
+        "value": "Correspondence",
+        "attrs": {
+          "lang": "en",
+          "ns": "http://www.europeana.eu/schemas/edm/hasType",
+          "classmap": "dpla:SourceResource",
+          "property": "edm:hasType"
+        },
+        "iri": "http://www.europeana.eu/schemas/edm/hasType",
+        "explain": "A Europeana Data Model Property; This property relates a resource with the concepts it belongs to in a suitable type system such as MIME or any thesaurus that captures categories of objects in a given field. It does NOT capture aboutness"
+      }
+    ],
+    "Identifier": [
+      {
+        "label": "Digital Identifier",
+        "value": "1_22",
+        "attrs": {
+          "lang": "en",
+          "ns": "http://purl.org/dc/terms/identifier",
+          "classmap": "dpla:SourceResource",
+          "property": "dcterms:identifier"
+        },
+        "iri": "http://purl.org/dc/terms/identifier",
+        "explain": "A Dublin Core Terms Property; An unambiguous reference to the resource within a given context.; Recommended best practice is to identify the resource by means of a string conforming to a formal identification system."
+      }
+    ],
+    "IsShownAt": [
+      {
+        "label": "Is Shown At",
+        "value": "http://open.library.ubc.ca/collections/darwin/items/00.00.0000.0056802",
+        "attrs": {
+          "lang": "en",
+          "ns": "http://www.europeana.eu/schemas/edm/isShownAt",
+          "classmap": "edm:WebResource",
+          "property": "edm:isShownAt"
+        },
+        "iri": "http://www.europeana.eu/schemas/edm/isShownAt",
+        "explain": "A Europeana Data Model Property; An unambiguous URL reference to the digital object on the provider’s website in its full information context."
+      }
+    ],
+    "Language": [
+      {
+        "label": "Language",
+        "value": "English",
+        "attrs": {
+          "lang": "en",
+          "ns": "http://purl.org/dc/terms/language",
+          "classmap": "dpla:SourceResource",
+          "property": "dcterms:language"
+        },
+        "iri": "http://purl.org/dc/terms/language",
+        "explain": "A Dublin Core Terms Property; A language of the resource.; Recommended best practice is to use a controlled vocabulary such as RFC 4646 [RFC4646]."
+      }
+    ],
+    "PersonOrCorporation": [
+      {
+        "label": "Personal Names",
+        "value": "Darwin, Charles, 1809-1882 ;  Burdon-Sanderson, J. (John), Sir, 1828-1905 ;  Sanderson, Mrs. ;  Bastian, Adolf, 1826-1905 ;  Lister ;  Simon ;  Paget ;  Moore",
+        "attrs": {
+          "lang": "en",
+          "ns": "http://purl.org/dc/terms/subject",
+          "classmap": "oc:PublicationDescription",
+          "property": "dcterms:subject"
+        },
+        "iri": "http://purl.org/dc/terms/subject",
+        "explain": "A Dublin Core Terms Property; The topic of the resource.; Typically, the subject will be represented using keywords, key phrases, or classification codes. Recommended best practice is to use a controlled vocabulary."
+      }
+    ],
+    "Publisher": [
+      {
+        "label": "Publisher - Digital",
+        "value": "Vancouver : University of British Columbia Library",
+        "attrs": {
+          "lang": "en",
+          "ns": "http://purl.org/dc/terms/publisher",
+          "classmap": "dpla:SourceResource",
+          "property": "dcterms:publisher"
+        },
+        "iri": "http://purl.org/dc/terms/publisher",
+        "explain": "A Dublin Core Terms Property; An entity responsible for making the resource available.; Examples of a Publisher include a person, an organization, or a service."
+      }
+    ],
+    "Rights": [
+      {
+        "label": "Rights",
+        "value": "Images provided for research and reference use only. Permission to publish, copy or otherwise use these images must be obtained from Rare Books and Special Collections: http://rbsc.library.ubc.ca/",
+        "attrs": {
+          "lang": "en",
+          "ns": "http://purl.org/dc/terms/rights",
+          "classmap": "edm:WebResource",
+          "property": "dcterms:rights"
+        },
+        "iri": "http://purl.org/dc/terms/rights",
+        "explain": "A Dublin Core Terms Property; Information about rights held in and over the resource.; Typically, rights information includes a statement about various property rights associated with the resource, including intellectual property rights."
+      }
+    ],
+    "SortDate": [
+      {
+        "label": "Sort Date",
+        "value": "1875-07-16",
+        "attrs": {
+          "lang": "en",
+          "ns": "http://purl.org/dc/elements/1.1/date",
+          "classmap": "dpla:SourceResource"
+        },
+        "iri": "http://purl.org/dc/elements/1.1/date",
+        "explain": "A Dublin Core Elements Property; A point or period of time associated with an event in the lifecycle of the resource.; Date may be used to express temporal information at any level of granularity. Recommended best practice is to use an encoding scheme, such as the W3CDTF profile of ISO 8601 [W3CDTF]."
+      }
+    ],
+    "Source": [
+      {
+        "label": "Source",
+        "value": "Original Format: University of British Columbia. Library. Rare Books and Special Collections. The Darwin-Burdon-Sanderson Letters",
+        "attrs": {
+          "lang": "en",
+          "ns": "http://purl.org/dc/terms/source",
+          "classmap": "oc:SourceResource",
+          "property": "dcterms:source"
+        },
+        "iri": "http://purl.org/dc/terms/source",
+        "explain": "A Dublin Core Terms Property; A related resource from which the described resource is derived.; The described resource may be derived from the related resource in whole or in part. Recommended best practice is to identify the related resource by means of a string conforming to a formal identification system."
+      }
+    ],
+    "Title": [
+      {
+        "label": "Title",
+        "value": "[Letter, Charles R. Darwin to John Burdon-Sanderson, July 16, 1875]",
+        "attrs": {
+          "lang": "en",
+          "ns": "http://purl.org/dc/terms/title",
+          "classmap": "dpla:SourceResource",
+          "property": "dcterms:title"
+        },
+        "iri": "http://purl.org/dc/terms/title",
+        "explain": "A Dublin Core Terms Property; TA name given to the resource."
+      }
+    ],
+    "Type": [
+      {
+        "label": "Type",
+        "value": "Text",
+        "attrs": {
+          "lang": "en",
+          "ns": "http://purl.org/dc/terms/type",
+          "classmap": "dpla:SourceResource",
+          "property": "dcterms:type"
+        },
+        "iri": "http://purl.org/dc/terms/type",
+        "explain": "A Dublin Core Terms Property; The nature or genre of the resource.; Recommended best practice is to use a controlled vocabulary such as the DCMI Type Vocabulary [DCMITYPE]. To describe the file format, physical medium, or dimensions of the resource, use the Format element."
+      }
+    ]
+  }
+}

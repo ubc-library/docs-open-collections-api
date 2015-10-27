@@ -1,0 +1,13 @@
+{
+  "from": 0,
+  "size": 10,
+  "body": {
+    "query": {
+      "query_string": {
+        "query": "*"
+      }
+    }
+  },
+  "index": "oc",
+  "type": "object"
+}

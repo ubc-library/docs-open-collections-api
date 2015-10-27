@@ -1,0 +1,123 @@
+<div id="reference-endpoints" class="box">
+    <h3>Endpoints</h3>
+
+    <p>The following API endpoints are available for use</p>
+    <label for="collectionSelecter">Collection:</label>
+    <select id="collectionSelecter">
+        <option value="null"> --- Select a collection --- </option>
+        {% for collection in data.collections %}
+        <option value="{{collection.collection_id}}">{{collection.title}}</option>
+        {% endfor %}
+    </select>
+    <div class='table-wrap'>
+        <table id="endpointsTable">
+            <tbody>
+            <tr>
+                <th>Method</th>
+                <th>Endpoint</th>
+                <th>Description</th>
+                <th>Status</th>
+            </tr>
+            {% for endpoints in data.endpoints %}
+                <tr>
+                    <td>{{endpoints.method}}</td>
+                    <td>{{endpoints.endpoint}}</td>
+                    <td>{{endpoints.description}}</td>
+                    <td>
+                        {% if endpoints.status == 1 %}
+                        <span class="label label-success"><i class="fa fa-power-off online"></i> Online</span>
+                        {% else %}
+                        <span class="label label-danger"><i class="fa fa-power-off online"></i> Offline</span>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<div id="reference-collections" class="box">
+    <h3>Collections</h3>
+    <div class="collapsible">
+        <div class="collapsible_action" data-boxid="collapsible_box_2">Collapse -</div>
+        <div class="collapsible_box" id="collapsible_box_2">
+            <table>
+                <tbody>
+                <tr>
+                    <th>Collection ID</th>
+                    <th>Collection Name</th>
+                </tr>
+                {% for collection in data.collections %}
+                <tr>
+                    <td>{{collection.collection_id}}</td>
+                    <td>{{collection.title}}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div id="reference-fields" class="box">
+    <h3>Fields</h3>
+    <p>To view more about our metadata terms please <a href="{{base_url}}/terms">view this page.</a></p>
+    <div class="collapsible">
+        <div class="collapsible_action" data-boxid="collapsible_box_3">Collapse -</div>
+        <div class="collapsible_box" id="collapsible_box_3">
+            <table>
+                <tbody>
+                <tr>
+                    <th>Field Label</th>
+                    <th>Api Field</th>
+                    <th>Mapping Documentation</th>
+                </tr>
+                {% for key,object in data.api_fields %}
+                {% for obj in object %}
+                <tr>
+                    <td>{{obj.label}}</td>
+                    <td>{{key}}</td>
+                    <td><a href="{{obj.iri}}" target="_blank">{{obj.iri}}</a></td>
+                </tr>
+                {% endfor %}
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div id="reference-headers" class="box">
+    <h3>Headers</h3>
+
+    <p>Responses from the API are returned as JSON by default, however when doing 'GET' calls for items you can request RDF or JSON-LD (Linked Data) output by using the HTTP 'Accept'
+        header when making your API calls.</p>
+
+    <p>Select a format to show the corresponding header and preview the response. If no Accept header is present, regular JSON will be returned by
+        default.</p>
+
+    <div class='table-wrap'>
+        <table>
+            <tbody>
+            <tr>
+                <th>HTTP&#8209;Header</th>
+                <th>Value</th>
+                <th>Returns</th>
+            </tr>
+            <tr>
+                <td>Accept</td>
+                <td>application/JSON, application/vnd.ubc.lsit.diglib.v1+json</td>
+                <td>JSON</td>
+            </tr>
+            <tr>
+                <td>Accept</td>
+                <td>application/vnd.ubc.lsit.diglib.v1.linked+json</td>
+                <td>JSON-LD</td>
+            </tr>
+            <!--<tr>-->
+                <!--<td>Accept</td>-->
+                <!--<td>application/vnd.ubc.lsit.diglib.v1.linked+rdf</td>-->
+                <!--<td>RDF Structure</td>-->
+            <!--</tr>-->
+            </tbody>
+        </table>
+    </div>
+</div>
