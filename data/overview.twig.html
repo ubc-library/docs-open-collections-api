@@ -12,12 +12,16 @@
         <li>Reach us at <a href="mailto:library.opencollections@ubc.ca" title="Open Collections Email">library.opencollections@ubc.ca</a> for inquiries.</li>
     </ul>
     <h3 id="overview-essentials">The Essentials</h3>
-    <p>If you need to start straight away, heres how:</p>
+    <p>If you need to start straight away, here is how:</p>
     <ul>
         <li><a href="{{data.api_url}}" target="_blank">{{data.api_url}}</a> is the base URL of the Open Collections API.</li>
-        <li>In order to pass requests to the API, you'll need to <a href="{{base_url}}/docs#register-api-key" link-out>register an API key</a> first. You also need to append &api_key=$YOUR_KEY (where $YOUR_KEY is your API key) to any requests you make.</li>
+        <li>In order to pass requests to the API, you'll need to <a href="{{base_url}}/docs#register-api-key" link-out>register an API key</a> first. You also need to append &api_key=:YOUR_API_KEY (where :YOUR_API_KEY is the API key you received after registering for the Open Collections API) to any requests you make.</li>
         <li>All records are returned by default as JSON-LD objects however you can request other formats by using <a href="{{base_url}}/docs#reference-headers" link-out>request headers. </a></li>
         <li>We've got lots of <a href="{{base_url}}/docs#reference-fields">fields you can query</a>, and a whole lot of <a href="{{base_url}}/docs#api-requests">ways you can query them.</a></li>
         <li>Items and collections are the two main resource types you can request.</li>
     </ul>
+</div>
+<div class="row-fluid">
+    <div class="span9"></div>
+    <div class="span3"> <a href="https://github.com/ubc-library/docs-open-collections-api/blob/master/data/overview.twig.html" target="_blank"><button class="dl-sbtn-lrg dl-advs-add-btn fa fa-github githubButton"> Edit this section on Github</button></a></div>
 </div>
