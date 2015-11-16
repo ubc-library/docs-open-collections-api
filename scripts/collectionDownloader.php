@@ -99,7 +99,7 @@
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-        curl_setopt($ch, CURLOPT_URL, "{$ocREST}/collections");
+        curl_setopt($ch, CURLOPT_URL, "{$ocREST}/collections?api_key={$apiKey}");
         $response = curl_exec($ch);
         curl_close($ch);
         $collections = json_decode($response, TRUE)['data'];
@@ -124,12 +124,12 @@
         $offset = 0;
 
         while (!$finishedProcessing) {
-            echo("GET:/collections/{$idx}/items?limit={$limit}&offset={$offset}\n");
+            echo("GET:/collections/{$idx}/items?api_key={$apiKey}&limit={$limit}&offset={$offset}\n");
             // Get items from collection
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-            curl_setopt($ch, CURLOPT_URL, "{$ocREST}/collections/{$idx}/items?limit={$limit}&offset={$offset}");
+            curl_setopt($ch, CURLOPT_URL, "{$ocREST}/collections/{$idx}/items?api_key={$apiKey}&limit={$limit}&offset={$offset}");
             $response = curl_exec($ch);
             curl_close($ch);
 
@@ -149,7 +149,7 @@
                     $ch = curl_init();
                     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
                     curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-                    curl_setopt($ch, CURLOPT_URL, "{$ocREST}/collections/{$idx}/items/{$iid}/output-format/{$format}");
+                    curl_setopt($ch, CURLOPT_URL, "{$ocREST}/collections/{$idx}/items/{$iid}/output-format/{$format}?api_key={$apiKey}");
                     $response = curl_exec($ch);
                     curl_close($ch);
 
