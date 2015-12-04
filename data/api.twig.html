@@ -12,7 +12,7 @@
     </p>
     <h4>How do I use it?</h4>
     <p>
-        All you need to do to use the Open Collections API is:
+        To get started using the Open Collections API:
     </p>
     <ol>
         <li><a href="{{base_url}}/docs#register-api-key" link-out>Register an API Key</a></li>
@@ -22,8 +22,8 @@
 </div>
 <div id="api-keys" class="box">
     <h3>API Keys</h3>
-    <p>To control abuse, users will need to register their email address to receive an API Key (much like DPLA).
-        Users are also constrained to no more than 200 requests per minute. Public Access Key is listed below</p>
+    <p>To control abuse, users will need to register their email address to receive an API Key (much like DPLA).<br />
+        <em> Users are also constrained to no more than 200 requests per minute. </em></p>
     <table>
         <tbody>
         <tr>
@@ -40,9 +40,9 @@
             <td>Your API Key</td>
             <td>
                 {% if data.user_api_key %}
-                {{data.user_api_key}}
+                    {{data.user_api_key}}
                 {% else %}
-                You haven't yet registered an API key, instructions on how you can are below.
+                    You haven't yet registered an API key, instructions on how you can are below.
                 {% endif %}
             </td>
             <td>200req/min</td>
