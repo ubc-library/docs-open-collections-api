@@ -2,27 +2,38 @@
     <h3>API Basics</h3>
     <h4>What is an API?</h4>
     <p>
-        At its most basic, an API, or Application Programming Interface, is made up of a set of defined methods that someone can use to communicate with a (often complex) software system, and get back responses in a way that a computer (and, with some practice, a human) can understand.
+        At its most basic, an API, or Application Programming Interface, is made up of a set of defined methods that
+        someone can use to communicate with a (often complex) software system, and get back responses in a way that a
+        computer (and, with some practice, a human) can understand.
     </p>
     <p>
-        In essence, an API defines the 'language' a system speaks. Like a language, it has its own vocabulary with terms that have special meanings (e.g., property names and labels), grammar (how those property names and labels are arranged collectively, its schema), and syntax (i.e., how the information itself is arranged). Like a language, you can use it to ask questions and understand responses. And like a language, with a little practice, it can be a powerful and extensible tool for communication.
+        In essence, an API defines the 'language' a system speaks. Like a language, it has its own vocabulary with terms
+        that have special meanings (e.g., property names and labels), grammar (how those property names and labels are
+        arranged collectively, its schema), and syntax (i.e., how the information itself is arranged). Like a language,
+        you can use it to ask questions and understand responses. And like a language, with a little practice, it can be
+        a powerful and extensible tool for communication.
     </p>
     <p>
-        A request is a URL sent to the web server over HTTP with the expectation of getting resource items back in the form of human-readable text or data. The URL supplies the web server with everything it needs to create and return a correct response. This is called a <a href="http://en.wikipedia.org/wiki/RESTful" target="_blank">RESTful</a> approach to API design and is employed by the Open Collections API.
+        A request is a URL sent to the web server over HTTP with the expectation of getting resource items back in the
+        form of human-readable text or data. The URL supplies the web server with everything it needs to create and
+        return a correct response. This is called a <a href="http://en.wikipedia.org/wiki/RESTful" target="_blank">RESTful</a>
+        approach to API design and is employed by the Open Collections API.
     </p>
     <h4>How do I use it?</h4>
     <p>
         To get started using the Open Collections API:
     </p>
     <ol>
-        <li><a href="{{base_url}}/docs#register-api-key" link-out>Register an API Key</a></li>
-        <li>Use your web browser's URL bar or a browser plugin like <a href="https://www.getpostman.com/" target="_blank">Postman</a> to make a request</li>
-        <li>Read the <a href="{{base_url}}/docs#api-responses" link-out>response</a></li>
+        <li><a href="{{ base_url }}/docs#register-api-key" link-out>Register an API Key</a></li>
+        <li>Use your web browser's URL bar or a browser plugin like <a href="https://www.getpostman.com/"
+                                                                       target="_blank">Postman</a> to make a request
+        </li>
+        <li>Read the <a href="{{ base_url }}/docs#api-responses" link-out>response</a></li>
     </ol>
 </div>
 <div id="api-keys" class="box">
     <h3>API Keys</h3>
-    <p>To control abuse, users will need to register their email address to receive an API Key (much like DPLA).<br />
+    <p>To control abuse, users will need to register their email address to receive an API Key (much like DPLA).<br/>
         <em> Users are also constrained to no more than 200 requests per minute. </em></p>
     <table>
         <tbody>
@@ -33,14 +44,14 @@
         </tr>
         <tr>
             <td>Public API Key</td>
-            <td>{{data.public_api_key}}</td>
+            <td>{{ data.public_api_key }}</td>
             <td>10req/min</td>
         </tr>
         <tr>
             <td>Your API Key</td>
             <td>
                 {% if data.user_api_key %}
-                    {{data.user_api_key}}
+                    {{ data.user_api_key }}
                 {% else %}
                     You haven't yet registered an API key, instructions on how you can are below.
                 {% endif %}
@@ -54,79 +65,107 @@
     <h3>Registering an API Key</h3>
     <div class="email-form" ng-hide="emailEntered" style="clear:both;">
         <p>Register your email address with us to receive an <strong>API key</strong>.</p>
-        <input id="email-input" type="email" placeholder="Email address" ng-model="email" aria-label="Email Input" style="width:300px;float:left;">
-        <button id="email-submit" class="dl-btn" ng-click="getApiKey();" aria-label="Submit Button" style="width:200px;">Submit</button>
+        <input id="email-input" type="email" placeholder="Email address" ng-model="email" aria-label="Email Input"
+               style="width:300px;float:left;">
+        <button id="email-submit" class="dl-btn" ng-click="getApiKey();" aria-label="Submit Button"
+                style="width:200px;">Submit
+        </button>
     </div>
     <div class="email-success ng-hide" ng-show="emailEntered">
         <p><strong>API Key:</strong></p>
         <div class="row-fluid">
-            <input class="span12 monospace copycursor" type="text" ng-model="apiKey" placeholder="API Key" readonly="readonly" clickselect>
+            <input class="span12 monospace copycursor" type="text" ng-model="apiKey" placeholder="API Key"
+                   readonly="readonly" clickselect>
         </div>
-        <p>An email has been sent to the address entered. <b>Usage rates are limited until the address has been confirmed.</b></p>
+        <p>An email has been sent to the address entered. <b>Usage rates are limited until the address has been
+                confirmed.</b></p>
     </div>
 </div>
 <div id="api-requests" class="box">
     <h3>Requests</h3>
-    <p>The base URL of the API is: <a href="{{data.api_url}}" link-out>{{data.api_url}}</a></p>
+    <p>The base URL of the API is: <a href="{{ data.api_url }}" link-out>{{ data.api_url }}</a></p>
     <h4>Resource Types</h4>
     <p>
-        When you formulate a REST query, you have to decide which resource type you want to access. The two resource types currently offered are described below.
+        When you formulate a REST query, you have to decide which resource type you want to access. The two resource
+        types currently offered are described below.
     </p>
 
     <h5>Collection</h5>
     <p>
-        A collection is a reference to a collection of multiple items indexed in Open Collections. Collections have two RESTful routes associated with them, examples are provided below;
+        A collection is a reference to a collection of multiple items indexed in Open Collections. Collections have two
+        RESTful routes associated with them, examples are provided below;
     </p>
     <div>
-        <strong>Collection Metadata</strong><br />
+        <strong>Collection Metadata</strong><br/>
         The RESTful URL to request a collections metadata is structured as follows:
-        <br />
-        <a>{{data.api_url}}/collections/<ins>:name</ins></a>
-        <br />
-        Where <ins>:name</ins> is the nickname of a collection in Open Collections.
+        <br/>
+        <a>{{ data.api_url }}/collections/
+            <ins>:name</ins>
+        </a>
+        <br/>
+        Where
+        <ins>:name</ins>
+        is the nickname of a collection in Open Collections.
     </div>
-    <br />
+    <br/>
     <div class="api_example">
-        <strong>Collection Metadata Example</strong><br />
-        For your convenience here is an example of a call to get the collection berkpost's metadata.<br />
-        <a href="{{data.api_url}}/collections/berkpost" link-out>{{data.api_url}}/collections/berkpost</a>
+        <strong>Collection Metadata Example</strong><br/>
+        For your convenience here is an example of a call to get the collection berkpost's metadata.<br/>
+        <a href="{{ data.api_url }}/collections/berkpost" link-out>{{ data.api_url }}/collections/berkpost</a>
     </div>
-    <br />
+    <br/>
     <div>
-        <strong>Collection Items</strong><br />
+        <strong>Collection Items</strong><br/>
         The RESTful URL to request a collections items is structured as follows:
-        <br />
-        <a>{{data.api_url}}/collections/<ins>:name</ins>/items</a>
-        <br />
-        Where <ins>:name</ins> is the nickname of a collection in Open Collections.
+        <br/>
+        <a>{{ data.api_url }}/collections/
+            <ins>:name</ins>
+            /items</a>
+        <br/>
+        Where
+        <ins>:name</ins>
+        is the nickname of a collection in Open Collections.
     </div>
-    <br />
+    <br/>
     <div class="api_example">
-        <strong>Collection Items Example</strong><br />
-        For your convenience here is an example of a call to get all of the collection berkpost items.<br />
-        <a href="{{data.api_url}}/collections/berkpost/items" link-out>{{data.api_url}}/collections/berkpost/items</a>
+        <strong>Collection Items Example</strong><br/>
+        For your convenience here is an example of a call to get all of the collection berkpost items.<br/>
+        <a href="{{ data.api_url }}/collections/berkpost/items" link-out>{{ data.api_url }}
+            /collections/berkpost/items</a>
     </div>
-    <br />
+    <br/>
 
     <h5>Item</h5>
     <p>
-        An item is a reference to a single piece of content indexed in Open Collections. The content can be, for example, a book, an image, a video, etc. The content is digitized from its original, physical source and uploaded to an online repository. After retrieving items, developers can display or follow links to their original online digital records.
+        An item is a reference to a single piece of content indexed in Open Collections. The content can be, for
+        example, a book, an image, a video, etc. The content is digitized from its original, physical source and
+        uploaded to an online repository. After retrieving items, developers can display or follow links to their
+        original online digital records.
     </p>
 
     <div>
-        <strong>Structure</strong><br />
+        <strong>Structure</strong><br/>
         The RESTful URL to request a collections items is structured as follows:
-        <br />
-        <a>{{data.api_url}}/collections/<ins>:name</ins>/items/<ins>:itemId</ins></a>
-        <br />
-        Where <ins>:name</ins> is the nickname of a collection in Open Collections and <ins>:itemId</ins> is the items identifier.
+        <br/>
+        <a>{{ data.api_url }}/collections/
+            <ins>:name</ins>
+            /items/
+            <ins>:itemId</ins>
+        </a>
+        <br/>
+        Where
+        <ins>:name</ins>
+        is the nickname of a collection in Open Collections and
+        <ins>:itemId</ins>
+        is the items identifier.
     </div>
-    <br />
+    <br/>
 
     <div class="api_example">
-        <strong>Example</strong><br />
-        For your convenience here is an example of a call to get all of the collection berkpost items.<br />
-        <a href="{{data.api_url}}/collections/berkpost/items/00.00.0000.0056783" link-out>{{data.api_url}}/collections/berkpost/items/00.00.0000.0056783</a>
+        <strong>Example</strong><br/>
+        For your convenience here is an example of a call to get all of the collection berkpost items.<br/>
+        <a href="{{ data.api_url }}/collections/berkpost/items/00.00.0000.0056783" link-out>{{ data.api_url }}
+            /collections/berkpost/items/00.00.0000.0056783</a>
     </div>
 
 
@@ -135,34 +174,51 @@
     <h3>Responses</h3>
     <h4>Fields</h4>
     <p>
-        We have explanations of the <a href="{{base_url}}/docs#reference-fields" link-out>fields a response returns</a>
+        We have explanations of the <a href="{{ base_url }}/docs#reference-fields" link-out>fields a response
+            returns</a>
     </p>
     <h4>Example Response</h4>
-    <div class="collapsible">
-        <div class="collapsible_action" data-boxid="collapsible_box_1">Collapse -</div>
-        <div class="collapsible_box" id="collapsible_box_1">
-            <?prettify?>
+
+    <div class="row">
+        <div class="span3">
+            <button class="dl-btn-sm docsOverflowExpand" id="apiResponseOverflowBox">Expand/Contract Area</button>
+        </div>
+    </div>
+
+    <div class="docsOverflowBox" id="apiResponseOverflowBox">
+        <?prettify?>
             <pre class="prettyprint lang-json json" id="api_response">
 
             </pre>
-        </div>
     </div>
 </div>
 
 <div id="api-advanced-usage" class="box">
     <h3>Advanced Usage</h3>
-    <p>More advanced users that are looking to really dive into our API should check out the following <a href="https://www.elastic.co" link-out>Elastic Search</a> documentation:</p>
+    <p>More advanced users that are looking to really dive into our API should check out the following <a
+                href="https://www.elastic.co" link-out>Elastic Search</a> documentation:</p>
     <ul>
-        <li><a href="https://www.elastic.co/guide/en/elasticsearch/guide/current/search-in-depth.html" link-out>Search In Depth</a></li>
-        <li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/search.html" link-out>Search API documentation</a></li>
-        <li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html" link-out>Query DSL documentation</a></li>
-        <li><a href="https://www.elastic.co/guide/en/elasticsearch/guide/current/languages.html" link-out>Dealing with Human Language</a></li>
-        <li><a href="https://www.elastic.co/guide/en/elasticsearch/guide/current/aggregations.html" link-out>Aggregates</a></li>
-        <li><a href="https://www.elastic.co/guide/en/elasticsearch/guide/current/geoloc.html" link-out>Geolocation</a></li>
+        <li><a href="https://www.elastic.co/guide/en/elasticsearch/guide/current/search-in-depth.html" link-out>Search
+                In Depth</a></li>
+        <li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/search.html" link-out>Search API
+                documentation</a></li>
+        <li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html" link-out>Query DSL
+                documentation</a></li>
+        <li><a href="https://www.elastic.co/guide/en/elasticsearch/guide/current/languages.html" link-out>Dealing with
+                Human Language</a></li>
+        <li><a href="https://www.elastic.co/guide/en/elasticsearch/guide/current/aggregations.html"
+               link-out>Aggregates</a></li>
+        <li><a href="https://www.elastic.co/guide/en/elasticsearch/guide/current/geoloc.html" link-out>Geolocation</a>
+        </li>
     </ul>
 </div>
 
 <div class="row-fluid">
     <div class="span9"></div>
-    <div class="span3"> <a href="https://github.com/ubc-library/docs-open-collections-api/blob/master/data/api.twig.html" target="_blank"><button class="dl-sbtn-lrg dl-advs-add-btn fa fa-github githubButton"> Edit this section on Github</button></a></div>
+    <div class="span3"><a href="https://github.com/ubc-library/docs-open-collections-api/blob/master/data/api.twig.html"
+                          target="_blank" class="githubLink">
+            <button class="dl-sbtn-lrg dl-advs-add-btn githubButton"><i class="fa fa-github"></i>&nbsp;Edit this section
+                on Github
+            </button>
+        </a></div>
 </div>

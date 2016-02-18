@@ -1,13 +1,188 @@
 <p>Scripts for working with the API can be viewed or downloaded below.</p>
+<div id="scripts-all-collection-items" class="box">
+    <h3>Get all items from a collection</h3>
+
+    <p>To get all items from a collection you need to request the collection first and retrieve all its item ids and
+        then loop through each item using the API.</p>
+    <label for="languageSwitcher2">Language:</label>
+    <select id="languageSwitcher2" class="language_switch">
+        <!--<option value="js">JS</option>-->
+        <option value="php" selected>PHP</option>
+        <!--<option value="python">Python</option>-->
+    </select>
+
+    <div class="languageWindow php">
+        <pre class="prettyprint lang-php php">
+
+    // Replace this with your API Key
+    $apiKey = 'ac40e6c2cb345593ed1691e0a8b601bba398e42d85f81f893c5ab709cec63c6c';
+
+    // Collection to get all items from
+    $collection = 'darwin';
+
+    // Setting up arrays to store data in
+    $itemIds = [];
+    $items = [];
+
+    // First we need to get all the Item Ids from the API
+    $curlOutput = curlGet('https://oc-index.library.ubc.ca/collections/'.$collection.'/items?api_key='.$apiKey);
+
+    // Now we want to store them in an array we can use
+    foreach($curlOutput->data as $itemInCollection) {
+        $itemIds[] = $itemInCollection->_id;
+    }
+
+    // Next we want to loop through each item id and store the item data.
+    foreach($itemIds as $itemId) {
+        $curlOutput = curlGet('https://oc-index.library.ubc.ca/collections/'.$collection.'/items/'.$itemId.'?api_key='.$apiKey);
+        $items[] = $curlOutput->data;
+    }
+
+    // We now have our items and can use or manipulate them as needed.
+    echo json_encode($items);
+    exit;
+
+    //Simple curl function to keep code DRY, will exit on error.
+    function curlGet($url) {
+        try {
+            $ch = curl_init();
+            curl_setopt( $ch, CURLOPT_URL, $url );
+            curl_setopt( $ch, CURLOPT_SSLVERSION, CURL_SSLVERSION_TLSv1 );
+            curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1 );
+            $curlOutput = json_decode( curl_exec( $ch ) );
+            curl_close( $ch );
+        } catch ( Exception $e ) {
+            var_dump($e);
+            exit;
+        }
+        return $curlOutput;
+    }
+        </pre>
+    </div>
+</div>
+<div id="scripts-harvest-full-text" class="box">
+    <h3>Harvest full text of all items in a collection</h3>
+
+    <p class="api_note">Note: not all collections have full text, we've specifically chosen one of the smaller collections
+        with full text to show you how to programmatically loop through items and export the full text.</p>
+    <label for="languageSwitcher1">Language:</label>
+    <select id="languageSwitcher1" class="language_switch">
+        <!--<option value="js">JS</option>-->
+        <option value="php" selected>PHP</option>
+        <!--<option value="python">Python</option>-->
+    </select>
+
+    <div class="languageWindow js">
+        <pre class="prettyprint lang-js js">
+            Coming soon..
+        </pre>
+    </div>
+    <div class="languageWindow php">
+        <pre class="prettyprint lang-php php">
+    // Replace this with your API Key
+    $apiKey = 'ac40e6c2cb345593ed1691e0a8b601bba398e42d85f81f893c5ab709cec63c6c';
+
+    // Collection we want to harvest
+    $collection = 'darwin';
+    // Setup variables
+    $limit = 100;
+    $itemIds = [];
+    $items = [];
+
+    // First we need to find out how many items are in the collection
+    $curlOutput = curlGet('https://oc-index.library.ubc.ca/collections/' . $collection.'?api_key='.$apiKey);
+
+    // Now we have the item count, figure out the page count and create an offset of 0
+    $itemCount = $curlOutput->data->items;
+    $pageCount = ceil($itemCount / $limit);
+    $offset = 0;
+
+    // Loop through the pages and extract the item ids into the $itemIds array.
+    while ($pageCount > 0) {
+        $curlOutput = curlGet('https://oc-index.library.ubc.ca/collections/' . $collection . '/items?api_key='.$apiKey.'&offset=' . $offset . '&limit=' . $limit);
+        foreach ($curlOutput->data as $item) {
+            $itemIds[] = $item->_id;
+        }
+        $pageCount--;
+        $offset = $offset + 100;
+    }
+
+    // Loop through the item ids and extract metadata into the $items array.
+    foreach ($itemIds as $itemId) {
+        $curlOutput = curlGet('https://oc-index.library.ubc.ca/collections/' . $collection . '/items/' . $itemId.'?api_key='.$apiKey);
+        $item = $curlOutput->data;
+        $items[] = array(
+            "id"          => $itemId,
+            "title"       => $item->Title[0]->value,
+            "description" => $item->Description[0]->value,
+            "fullText"    => property_exists($item, 'FullText') ? $item->FullText[0]->value : null
+        );
+    }
+
+    // We now have the items stored in $items, uncomment below to check it out.
+    // echo json_encode($items);
+    // exit;
+
+    // For more fun lets add them into a CSV file. ( You could have file permission problems attempting this )
+    $fp = fopen($collection . '.csv', 'w');
+    fputcsv($fp, ['ID', 'TITLE', 'DESCRIPTION', 'FULLTEXT'], '~', '"');
+    foreach ($items as $item) {
+        fputcsv($fp, $item, '~', '"');
+    }
+    fclose($fp);
+
+    //Simple curl function to keep code DRY, will exit on error.
+    function curlGet($url)
+    {
+        try {
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_SSLVERSION, CURL_SSLVERSION_TLSv1);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            $curlOutput = json_decode(curl_exec($ch));
+            curl_close($ch);
+        } catch (Exception $e) {
+            var_dump($e);
+            exit;
+        }
+        return $curlOutput;
+    }
+        </pre>
+    </div>
+    <div class="languageWindow python">
+        <pre class="prettyprint lang-python python">
+            Coming soon..
+        </pre>
+    </div>
+    <p class="api_note">
+        <strong> Note:</strong> to use your CSV in Excel you will need to do the following steps:
+    </p>
+    <ol>
+        <li>Open Blank Workbook.</li>
+        <li>Go to <em>DATA</em> tab.</li>
+        <li>Click button <em>From Text</em> in the <em>General External Data</em> section.</li>
+        <li>Select your CSV file.</li>
+        <li>In Step 1 of the wizard set <em>Original Data Type</em> to 'Delimited' also check the box <em>My data has headers</em>
+        </li>
+        <li>In Step 2 of the wizard in the <em>Delimiters</em> section, un-check the 'Tab' option, then check the option 'Other' and insert the
+            value ' <strong>~</strong> '.
+        </li>
+        <li>Press Finish</li>
+    </ol>
+</div>
 <div id="scripts-collection-download" class="box">
     <h3>Download Collection Data</h3>
 
     <p>This script should be run from a terminal window, it allows you to download items metadata into a format of your
         choosing using the API.</p>
-    <a href="https://github.com/ubc-library/docs-open-collections-api/blob/master/scripts/collectionDownloader.php"
-       target="_blank">
-        <button class="dl-sbtn-lrg dl-advs-add-btn fa fa-github githubButton"> Download from Github</button>
-    </a>
+
+    <div class="row-fluid">
+        <div class="span9"></div>
+        <div class="span3">    <a href="https://github.com/ubc-library/docs-open-collections-api/blob/master/scripts/collectionDownloader.php"
+                                  target="_blank"  class="githubLink">
+                <button class="dl-sbtn-lrg dl-advs-add-btn githubButton"><i class="fa fa-github"></i>&nbsp;Download from Github</button>
+            </a></div>
+    </div>
 
     <div class="languageWindow php">
         <pre class="prettyprint lang-php php">
@@ -180,8 +355,8 @@
 <div class="row-fluid">
     <div class="span9"></div>
     <div class="span3"><a
-            href="https://github.com/ubc-library/docs-open-collections-api/blob/master/data/scripts.twig.html"
-            target="_blank">
-        <button class="dl-sbtn-lrg dl-advs-add-btn fa fa-github githubButton"> Edit this section on Github</button>
-    </a></div>
+                href="https://github.com/ubc-library/docs-open-collections-api/blob/master/data/scripts.twig.html"
+                target="_blank"  class="githubLink">
+            <button class="dl-sbtn-lrg dl-advs-add-btn githubButton"><i class="fa fa-github"></i>&nbsp;Edit this section on Github</button>
+        </a></div>
 </div>
