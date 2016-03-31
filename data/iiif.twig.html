@@ -1,0 +1,562 @@
+<p id="iiif">
+    To access our images programmatically you will need to learn about the <a href="//iiif.io" link-out>International
+        Image Interoperability Framework</a>.
+</p>
+<p>
+    The URL of the IIIF server is: <strong><a href="https://iiif.library.ubc.ca"
+                                              link-out>https://iiif.library.ubc.ca</a></strong>
+</p>
+<div class="api_example">
+    <strong>Note:</strong><br>
+    One thing you will need to remember when working with results from the Open Collections API and using the IIIF API
+    is that item identifiers recieved from Open Collections need to have the period replaced with a dash to work with
+    the IIIF API. For instance '1.0001258' would become '1-0001258'
+</div>
+<div id="iiif-documentation" class="box">
+    <h3>Documentation</h3>
+    <ul>
+        <li><a href="http://iiif.io/api/image/2.0/" link-out>IIIF Image API 2.0 Documentation</a></li>
+        <li><a href="http://iiif.io/api/presentation/2.0/" link-out>IIIF Presentation API 2.0 Documentation</a></li>
+    </ul>
+</div>
+
+<div id="iiif-example" class="box">
+    <h3>Example</h3>
+    <p>So say we find <a href="{{ base_url }}/collections/wwposters/items/1.0038290" link-out>this wonderful item</a>
+        about winning the war by eating less bread and want to view the item in IIIF.</p>
+    <p>
+        First you'll need to look at the 'Embed' accordion on the item's page and if you open that up you will see the
+        following link: <a href="http://iiif.library.ubc.ca/presentation/cdm.wwposters.1-0038290/manifest" link-out>http://iiif.library.ubc.ca/presentation/cdm.wwposters.1-0038290/manifest</a>
+    </p>
+    <p>
+        This will give us the manifest for the image/s in JSON, which includes the metadata and information about the
+        sequences(image/s) like so:
+    </p>
+
+    <div class="row">
+        <div class="span3">
+            <button class="dl-btn-sm docsOverflowExpand" id="iiifSequenceOverflowBoxController">Expand/Contract Area
+            </button>
+        </div>
+    </div>
+
+    <div class="docsOverflowBox" id="iiifSequenceOverflowBox">
+        <?prettify?>
+            <pre class="prettyprint lang-json json" id="api_response">
+{
+    "label": "The Kitchen is the [key] to victory. Eat less bread",
+    "viewingDirection": "left-to-right",
+    "viewingHint": "paged",
+    "metadata": [
+        {
+            "label": "Collection",
+            "value": [
+                {
+                    "label": "Is Part Of",
+                    "value": "World War I Poster and Broadside Collection",
+                    "attrs": {
+                        "lang": "en",
+                        "ns": "http:\/\/purl.org\/dc\/terms\/isPartOf",
+                        "classmap": "dpla:SourceResource",
+                        "property": "dcterms:isPartOf"
+                    },
+                    "iri": "http:\/\/purl.org\/dc\/terms\/isPartOf",
+                    "explain": "A Dublin Core Terms Property; A related resource in which the described resource is physically or logically included."
+                }
+            ]
+        },
+        {
+            "label": "DateAvailable",
+            "value": [
+                {
+                    "label": "Date Available",
+                    "value": "2013-10",
+                    "attrs": {
+                        "lang": "en",
+                        "ns": "http:\/\/purl.org\/dc\/terms\/issued",
+                        "classmap": "edm:WebResource",
+                        "property": "dcterms:issued"
+                    },
+                    "iri": "http:\/\/purl.org\/dc\/terms\/issued",
+                    "explain": "A Dublin Core Terms Property; Date of formal issuance (e.g., publication) of the resource."
+                }
+            ]
+        },
+        {
+            "label": "DateCreated",
+            "value": [
+                {
+                    "label": "Date Created",
+                    "value": "[between 1914 and 1918?]",
+                    "attrs": {
+                        "lang": "en",
+                        "ns": "http:\/\/purl.org\/dc\/terms\/created",
+                        "classmap": "oc:SourceResource",
+                        "property": "dcterms:created"
+                    },
+                    "iri": "http:\/\/purl.org\/dc\/terms\/created",
+                    "explain": "A Dublin Core Terms Property; Date of creation of the resource."
+                }
+            ]
+        },
+        {
+            "label": "Description",
+            "value": [
+                {
+                    "label": "Description",
+                    "value": "World War I poster.",
+                    "attrs": {
+                        "lang": "en",
+                        "ns": "http:\/\/purl.org\/dc\/terms\/description",
+                        "classmap": "dpla:SourceResource",
+                        "property": "dcterms:description"
+                    },
+                    "iri": "http:\/\/purl.org\/dc\/terms\/description",
+                    "explain": "A Dublin Core Terms Property; An account of the resource.; Description may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource."
+                }
+            ]
+        },
+        {
+            "label": "DigitalResourceOriginalRecord",
+            "value": [
+                {
+                    "label": "Digital Resource Original Record",
+                    "value": "https:\/\/open.library.ubc.ca\/collections\/wwposters\/items\/1.0038290",
+                    "attrs": {
+                        "lang": "en",
+                        "ns": "http:\/\/www.europeana.eu\/schemas\/edm\/aggregatedCHO",
+                        "classmap": "ore:Aggregation",
+                        "property": "edm:aggregatedCHO"
+                    },
+                    "iri": "http:\/\/www.europeana.eu\/schemas\/edm\/aggregatedCHO",
+                    "explain": "A Europeana Data Model Property; The identifier of the source object, e.g. the Mona Lisa itself. This could be a full linked open date URI or an internal identifier"
+                }
+            ]
+        },
+        {
+            "label": "Extent",
+            "value": [
+                {
+                    "label": "Extent",
+                    "value": "1 poster ; 76 x 51 cm",
+                    "attrs": {
+                        "lang": "en",
+                        "ns": "http:\/\/purl.org\/dc\/terms\/extent",
+                        "classmap": "dpla:SourceResource",
+                        "property": "dcterms:extent"
+                    },
+                    "iri": "http:\/\/purl.org\/dc\/terms\/extent",
+                    "explain": "A Dublin Core Terms Property; The size or duration of the resource."
+                }
+            ]
+        },
+        {
+            "label": "FileFormat",
+            "value": [
+                {
+                    "label": "Format",
+                    "value": "image\/jpeg",
+                    "attrs": {
+                        "lang": "en",
+                        "ns": "http:\/\/purl.org\/dc\/elements\/1.1\/format",
+                        "classmap": "edm:WebResource",
+                        "property": "dc:format"
+                    },
+                    "iri": "http:\/\/purl.org\/dc\/elements\/1.1\/format",
+                    "explain": "A Dublin Core Elements Property; The file format, physical medium, or dimensions of the resource.; Examples of dimensions include size and duration. Recommended best practice is to use a controlled vocabulary such as the list of Internet Media Types [MIME]."
+                }
+            ]
+        },
+        {
+            "label": "Genre",
+            "value": [
+                {
+                    "label": "Genre",
+                    "value": "Posters",
+                    "attrs": {
+                        "lang": "en",
+                        "ns": "http:\/\/www.europeana.eu\/schemas\/edm\/hasType",
+                        "classmap": "dpla:SourceResource",
+                        "property": "edm:hasType"
+                    },
+                    "iri": "http:\/\/www.europeana.eu\/schemas\/edm\/hasType",
+                    "explain": "A Europeana Data Model Property; This property relates a resource with the concepts it belongs to in a suitable type system such as MIME or any thesaurus that captures categories of objects in a given field. It does NOT capture aboutness"
+                }
+            ]
+        },
+        {
+            "label": "Identifier",
+            "value": [
+                {
+                    "label": "UBC Call Number",
+                    "value": "SPAM462C",
+                    "attrs": {
+                        "lang": "en",
+                        "ns": "http:\/\/purl.org\/dc\/terms\/identifier",
+                        "classmap": "dpla:SourceResource",
+                        "property": "dcterms:identifier"
+                    },
+                    "iri": "http:\/\/purl.org\/dc\/terms\/identifier",
+                    "explain": "A Dublin Core Terms Property; An unambiguous reference to the resource within a given context.; Recommended best practice is to identify the resource by means of a string conforming to a formal identification system."
+                }
+            ]
+        },
+        {
+            "label": "IsShownAt",
+            "value": [
+                {
+                    "label": "DOI",
+                    "value": "10.14288\/1.0038290",
+                    "attrs": {
+                        "lang": "en",
+                        "ns": "http:\/\/www.europeana.eu\/schemas\/edm\/isShownAt",
+                        "classmap": "edm:WebResource",
+                        "property": "edm:isShownAt"
+                    },
+                    "iri": "http:\/\/www.europeana.eu\/schemas\/edm\/isShownAt",
+                    "explain": "A Europeana Data Model Property; An unambiguous URL reference to the digital object on the provider\u2019s website in its full information context."
+                }
+            ]
+        },
+        {
+            "label": "Language",
+            "value": [
+                {
+                    "label": "Language",
+                    "value": "English",
+                    "attrs": {
+                        "lang": "en",
+                        "ns": "http:\/\/purl.org\/dc\/terms\/language",
+                        "classmap": "dpla:SourceResource",
+                        "property": "dcterms:language"
+                    },
+                    "iri": "http:\/\/purl.org\/dc\/terms\/language",
+                    "explain": "A Dublin Core Terms Property; A language of the resource.; Recommended best practice is to use a controlled vocabulary such as RFC 4646 [RFC4646]."
+                }
+            ]
+        },
+        {
+            "label": "Notes",
+            "value": [
+                {
+                    "label": "Notes",
+                    "value": "Printed on bottom left: \"F.C. no. 22.\" Donated by Simon Newcomb.",
+                    "attrs": {
+                        "lang": "en",
+                        "ns": "http:\/\/www.w3.org\/2009\/08\/skos-reference\/skos.html#note",
+                        "classmap": "skos:Concept",
+                        "property": "skos:note"
+                    },
+                    "iri": "http:\/\/www.w3.org\/2009\/08\/skos-reference\/skos.html#note",
+                    "explain": "Simple Knowledge Organisation System; Notes are used to provide information relating to SKOS concepts. There is no restriction on the nature of this information, e.g., it could be plain text, hypertext, or an image; it could be a definition, information about the scope of a concept, editorial information, or any other type of information."
+                }
+            ]
+        },
+        {
+            "label": "Publisher",
+            "value": [
+                {
+                    "label": "Publisher - Original",
+                    "value": "London, England : Printed by Hazell, Watson & Viney Ltd. Litho.",
+                    "attrs": {
+                        "lang": "en",
+                        "ns": "http:\/\/purl.org\/dc\/terms\/publisher",
+                        "classmap": "dpla:SourceResource",
+                        "property": "dcterms:publisher"
+                    },
+                    "iri": "http:\/\/purl.org\/dc\/terms\/publisher",
+                    "explain": "A Dublin Core Terms Property; An entity responsible for making the resource available.; Examples of a Publisher include a person, an organization, or a service."
+                },
+                {
+                    "label": "Publisher - Digital",
+                    "value": "Vancouver : University of British Columbia Library",
+                    "attrs": {
+                        "lang": "en",
+                        "ns": "http:\/\/purl.org\/dc\/terms\/publisher",
+                        "classmap": "dpla:SourceResource",
+                        "property": "dcterms:publisher"
+                    },
+                    "iri": "http:\/\/purl.org\/dc\/terms\/publisher",
+                    "explain": "A Dublin Core Terms Property; An entity responsible for making the resource available.; Examples of a Publisher include a person, an organization, or a service."
+                }
+            ]
+        },
+        {
+            "label": "Rights",
+            "value": [
+                {
+                    "label": "Rights",
+                    "value": "Images provided for research and reference use only. Permission to publish, copy, or otherwise use these images must be obtained from Rare Books and Special Collections: http:\/\/rbsc.library.ubc.ca",
+                    "attrs": {
+                        "lang": "en",
+                        "ns": "http:\/\/purl.org\/dc\/terms\/rights",
+                        "classmap": "edm:WebResource",
+                        "property": "dcterms:rights"
+                    },
+                    "iri": "http:\/\/purl.org\/dc\/terms\/rights",
+                    "explain": "A Dublin Core Terms Property; Information about rights held in and over the resource.; Typically, rights information includes a statement about various property rights associated with the resource, including intellectual property rights."
+                }
+            ]
+        },
+        {
+            "label": "SortDate",
+            "value": [
+                {
+                    "label": "Sort Date",
+                    "value": "1918",
+                    "attrs": {
+                        "lang": "en",
+                        "ns": "http:\/\/purl.org\/dc\/elements\/1.1\/date",
+                        "classmap": "dpla:SourceResource"
+                    },
+                    "iri": "http:\/\/purl.org\/dc\/elements\/1.1\/date",
+                    "explain": "A Dublin Core Elements Property; A point or period of time associated with an event in the lifecycle of the resource.; Date may be used to express temporal information at any level of granularity. Recommended best practice is to use an encoding scheme, such as the W3CDTF profile of ISO 8601 [W3CDTF]."
+                }
+            ]
+        },
+        {
+            "label": "Source",
+            "value": [
+                {
+                    "label": "Source",
+                    "value": "Original Format: University of British Columbia. Library. Rare Books and Special Collections. World War I Poster and Broadside Collection. SPAM462C",
+                    "attrs": {
+                        "lang": "en",
+                        "ns": "http:\/\/purl.org\/dc\/terms\/source",
+                        "classmap": "oc:SourceResource",
+                        "property": "dcterms:source"
+                    },
+                    "iri": "http:\/\/purl.org\/dc\/terms\/source",
+                    "explain": "A Dublin Core Terms Property; A related resource from which the described resource is derived.; The described resource may be derived from the related resource in whole or in part. Recommended best practice is to identify the related resource by means of a string conforming to a formal identification system."
+                }
+            ]
+        },
+        {
+            "label": "Title",
+            "value": [
+                {
+                    "label": "Title",
+                    "value": "The Kitchen is the [key] to victory. Eat less bread",
+                    "attrs": {
+                        "lang": "en",
+                        "ns": "http:\/\/purl.org\/dc\/terms\/title",
+                        "classmap": "dpla:SourceResource",
+                        "property": "dcterms:title"
+                    },
+                    "iri": "http:\/\/purl.org\/dc\/terms\/title",
+                    "explain": "A Dublin Core Terms Property; TA name given to the resource."
+                }
+            ]
+        },
+        {
+            "label": "Type",
+            "value": [
+                {
+                    "label": "Type",
+                    "value": "Still Image",
+                    "attrs": {
+                        "lang": "en",
+                        "ns": "http:\/\/purl.org\/dc\/terms\/type",
+                        "classmap": "dpla:SourceResource",
+                        "property": "dcterms:type"
+                    },
+                    "iri": "http:\/\/purl.org\/dc\/terms\/type",
+                    "explain": "A Dublin Core Terms Property; The nature or genre of the resource.; Recommended best practice is to use a controlled vocabulary such as the DCMI Type Vocabulary [DCMITYPE]. To describe the file format, physical medium, or dimensions of the resource, use the Format element."
+                }
+            ]
+        }
+    ],
+    "thumbnail": "\/\/iiif.library.ubc.ca\/image\/cdm.wwposters.1-0038290.0000\/full\/80,100\/0\/default.jpg",
+    "attribution": "Images provided for research and reference use only. Permission to publish, copy, or otherwise use these images must be obtained from Rare Books and Special Collections: http:\/\/rbsc.library.ubc.ca",
+    "sequences": [
+        {
+            "@id": "\/\/iiif.library.ubc.ca\/presentation\/cdm.wwposters.1-0038290\/sequence\/normal",
+            "@type": "sc:Sequence",
+            "label": "Default",
+            "viewingDirection": "left-to-right",
+            "viewingHint": "paged",
+            "canvases": [
+                {
+                    "@id": "\/\/iiif.library.ubc.ca\/presentation\/cdm.wwposters.1-0038290\/canvas\/p0",
+                    "@type": "sc:Canvas",
+                    "label": "The Kitchen is the [key] to victory. Eat less bread",
+                    "height": 6352,
+                    "width": 4263,
+                    "images": [
+                        {
+                            "@id": "\/\/iiif.library.ubc.ca\/presentation\/cdm.wwposters.1-0038290\/annotation\/p0000",
+                            "@type": "oa:Annotation",
+                            "motivation": "sc:painting",
+                            "resource": {
+                                "@id": "\/\/iiif.library.ubc.ca\/image\/cdm.wwposters.1-0038290",
+                                "@type": "dctypes:Image",
+                                "format": "image\/jpeg",
+                                "height": 6352,
+                                "width": 4263,
+                                "service": {
+                                    "@context": "http:\/\/iiif.io\/api\/image\/2\/context.json",
+                                    "@id": "\/\/iiif.library.ubc.ca\/image\/cdm.wwposters.1-0038290",
+                                    "@profile": "http:\/\/iiif.io\/api\/image\/2\/level2.json",
+                                    "scaleFactors": [
+                                        1,
+                                        2,
+                                        4,
+                                        8,
+                                        16,
+                                        32,
+                                        64,
+                                        128,
+                                        256,
+                                        512,
+                                        1024
+                                    ]
+                                }
+                            },
+                            "on": "\/\/iiif.library.ubc.ca\/cdm.wwposters.1-0038290\/canvas\/p0"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "description": "World War I poster.",
+    "@context": "http:\/\/iiif.io\/api\/presentation\/2\/context.json",
+    "@id": "https:\/\/iiif.library.ubc.ca\/presentation\/cdm.wwposters.1-0038290\/manifest",
+    "@type": "sc:Manifest"
+}
+            </pre>
+    </div>
+    <br/>
+    <p>
+        From the JSON we can see the property 'thumbnail' which in this instance has the value: <br/><a
+                href="http://iiif.library.ubc.ca/image/cdm.wwposters.1-0038290.0000/full/80,100/0/default.jpg" link-out>http://iiif.library.ubc.ca/image/cdm.wwposters.1-0038290.0000/full/80,100/0/default.jpg</a>
+    </p>
+    <p>
+        Now we can start to see how we could manipulate the URL to modify the image that is returned to us: <br/>
+        <strong>http://iiif.library.ubc.ca/image/cdm.wwposters.1-0038290.0000/[:region]/[:width],[:height]/[:rotation]/[:quality].[:format]</strong>
+    </p>
+    <p>
+        To find out what qualities and formats the image supports you can just remove everything after the identifier
+        and inspect just the image metadata for instance: <br />
+        <a href="http://iiif.library.ubc.ca/image/cdm.wwposters.1-0038290.0000" link-out>http://iiif.library.ubc.ca/image/cdm.wwposters.1-0038290.0000</a> <br />
+        For this image that would return the following JSON:
+    </p>
+
+    <div class="row">
+        <div class="span3">
+            <button class="dl-btn-sm docsOverflowExpand" id="iiifImageInfoOverflowBoxController">Expand/Contract Area
+            </button>
+        </div>
+    </div>
+
+    <div class="docsOverflowBox" id="iiifImageInfoOverflowBox">
+        <?prettify?>
+            <pre class="prettyprint lang-json json" id="api_response">
+{
+    "@context": "http:\/\/iiif.io\/api\/image\/2\/context.json",
+    "@id": "http:\/\/iiif.library.ubc.ca\/image\/cdm.wwposters.1-0038290",
+    "protocol": "http:\/\/iiif.io\/api\/image",
+    "width": 4263,
+    "height": 6352,
+    "sizes": [
+        {
+            "width": 4263,
+            "height": 6352
+        },
+        {
+            "width": 81,
+            "height": 120
+        }
+    ],
+    "tiles": [
+        {
+            "width": 512,
+            "scaleFactors": [
+                1,
+                2,
+                4,
+                8,
+                16,
+                32,
+                64,
+                128,
+                256,
+                512,
+                1024
+            ]
+        }
+    ],
+    "profile": [
+        "http:\/\/iiif.io\/api\/image\/2\/level2.json",
+        {
+            "formats": [
+                "jpg",
+                "png",
+                "gif"
+            ],
+            "qualities": [
+                "color",
+                "gray",
+                "bitonal"
+            ],
+            "supports": [
+                "baseUriRedirect",
+                "cors",
+                "jsonldMediaType",
+                "mirroring",
+                "regionByPct",
+                "regionByPx",
+                "rotationArbitrary",
+                "rotationBy90s",
+                "sizeByWhListed",
+                "sizeByForcedWh",
+                "sizeByH",
+                "sizeByPct",
+                "sizeByW",
+                "sizeByWh"
+            ]
+        }
+    ]
+}
+            </pre>
+    </div>
+
+    <p>
+
+    </p>
+
+</div>
+
+<div id="iiif-wallpaper" class="box">
+    <h3>Wallpaper</h3>
+    <div class="api_example">
+        <strong>Note:</strong><br>
+        If you just want a wallpaper we recommend that you use the image viewer on your item of choice to first crop the image (using the crop tool) and then click the 'image' icon to get directed to the IIIF link for the image. <br/> From there you can then enter your screen resolution in the URL and save the image.
+    </div>
+    <p>
+        So now that we've gone through all that work, lets request a nice sized desktop background: <br />
+       <a href="http://iiif.library.ubc.ca/image/cdm.wwposters.1-0038290/full/1024,768/0/default.png" link-out> http://iiif.library.ubc.ca/image/cdm.wwposters.1-0038290/full/1024,768/0/default.png</a>
+       </p>
+    <p>Of course since our image is sort of stretched now as it was portrait originally, we could instead request a much larger image and crop the image ourselves using some image editing software: <br />
+        <a href="http://iiif.library.ubc.ca/image/cdm.wwposters.1-0038290/full/1900,/0/default.png" link-out>http://iiif.library.ubc.ca/image/cdm.wwposters.1-0038290/full/1900,/0/default.png</a> <br />
+    </p>
+    <p>
+        Or alternatively we could have just chosen an image that was already in landscape mode so this works much easier: <br />
+        <a href="http://iiif.library.ubc.ca/image/cdm.tokugawa.1-0167752.0000/full/1600,900/0/default.png" link-out>http://iiif.library.ubc.ca/image/cdm.tokugawa.1-0213163/full/1600,900/0/default.png</a>
+    </p>
+    <p>
+        Last but not least, if we wanted to remove the excess borders we could pass through the [:region] part of the IIIF url: <br />
+       <a href="http://iiif.library.ubc.ca/image/cdm.tokugawa.1-0167752.0000/469,483,10323,4856/1600,900/0/default.png" link-out> http://iiif.library.ubc.ca/image/cdm.tokugawa.1-0213163/1145,374,9234,4645/1600,900/0/default.png</a>
+    </p>
+</div>
+
+<div class="row-fluid">
+    <div class="span9"></div>
+    <div class="span3"><a
+                href="https://github.com/ubc-library/docs-open-collections-api/blob/master/data/iiif.twig.html"
+                target="_blank" class="githubLink">
+            <button class="dl-sbtn-lrg dl-advs-add-btn githubButton"><i class="fa fa-github "></i>&nbsp;Edit this
+                section on Github
+            </button>
+        </a></div>
+</div>
