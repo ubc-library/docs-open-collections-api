@@ -4,12 +4,24 @@
 
     <p>To get all items from a collection you need to request the collection first and retrieve all its item ids and
         then loop through each item using the API.</p>
-    <label for="languageSwitcher1">Language:</label>
-    <select id="languageSwitcher1" class="languageSwitch">
-        <option value="go" selected>Go</option>
-        <option value="php" selected>PHP</option>
-        <option value="python">Python</option>
-    </select>
+
+    <div class="row-fluid">
+        <div class="span7">
+            <label for="languageSwitcher1">Language:</label>
+            <select id="languageSwitcher1" class="languageSwitch">
+                <option value="go" selected>Go</option>
+                <option value="php" selected>PHP</option>
+                <option value="python">Python</option>
+            </select>
+        </div>
+        <div class="span5">
+            <a href="https://github.com/ubc-library/docs-open-collections-api/tree/master/scripts/all_items_from_a_collection"
+               target="_blank" class="githubLink">
+                <button class="dl-sbtn-lrg dl-advs-add-btn githubButton"><i class="fa fa-github"></i>&nbsp;View Scripts
+                    on Github
+                </button>
+            </a></div>
+    </div>
 
     <div class="languageWindow languageWindow1 go">
         <pre class="prettyprint lang-go go">
@@ -199,11 +211,22 @@ print(json.dumps(items))
 
     <p class="api_note">Note: not all collections have full text, we've specifically chosen one of the smaller collections
         with full text to show you how to programmatically loop through items and export the full text.</p>
-    <label for="languageSwitcher2">Language:</label>
-    <select id="languageSwitcher2" class="languageSwitch">
-        <option value="php" selected>PHP</option>
-        <option value="python">Python</option>
-    </select>
+
+    <div class="row-fluid">
+        <div class="span7"><label for="languageSwitcher2">Language:</label>
+            <select id="languageSwitcher2" class="languageSwitch">
+                <option value="php" selected>PHP</option>
+                <option value="python">Python</option>
+            </select></div>
+        <div class="span5">
+            <a href="https://github.com/ubc-library/docs-open-collections-api/tree/master/scripts/harvest_collection_full_text"
+               target="_blank" class="githubLink">
+                <button class="dl-sbtn-lrg dl-advs-add-btn githubButton"><i class="fa fa-github"></i>&nbsp;View Scripts
+                    on Github
+                </button>
+            </a></div>
+    </div>
+
 
     <div class="languageWindow languageWindow2 php">
         <pre class="prettyprint lang-php php">
@@ -357,18 +380,20 @@ with open('full-text.csv', 'w+b') as csvfile:
         choosing using the API.</p>
 
     <div class="row-fluid">
-        <div class="span9"></div>
-        <div class="span3">    <a href="https://github.com/ubc-library/docs-open-collections-api/blob/master/scripts/collectionDownloader.php"
-                                  target="_blank"  class="githubLink">
-                <button class="dl-sbtn-lrg dl-advs-add-btn githubButton"><i class="fa fa-github"></i>&nbsp;Download from Github</button>
-            </a></div>
+        <div class="span7">
+            <label for="languageSwitcher3">Language:</label>
+            <select id="languageSwitcher3" class="languageSwitch">
+                <option value="php" selected>PHP</option>
+                <!--<option value="python">Python</option>-->
+            </select>
+        </div>
+        <div class="span5">
+            <a href="https://github.com/ubc-library/docs-open-collections-api/blob/master/scripts/collection_downloader/collection_downloader.php"
+               target="_blank"  class="githubLink">
+                <button class="dl-sbtn-lrg dl-advs-add-btn githubButton"><i class="fa fa-github"></i>&nbsp;View Script on Github</button>
+            </a>
+        </div>
     </div>
-
-    <label for="languageSwitcher3">Language:</label>
-    <select id="languageSwitcher3" class="languageSwitch">
-        <option value="php" selected>PHP</option>
-        <!--<option value="python">Python</option>-->
-    </select>
 
     <div class="languageWindow languageWindow3 php">
         <pre class="prettyprint lang-php php">
@@ -546,8 +571,11 @@ exit;
     <h3>iPython</h3>
 
     <p>We also have some iPython notebooks showcasing how to use our API to get items, search using the API and perform some simple (and questionable) full text analysis:</p>
-
-    <p><a href="https://github.com/ubc-library/docs-open-collections-api/tree/master/scripts/iPython" link-out>https://github.com/ubc-library/docs-open-collections-api/tree/master/scripts/iPython</a></p>
+    <a href="https://github.com/ubc-library/docs-open-collections-api/tree/master/iPython"
+       target="_blank"  class="githubLink">
+        <button class="dl-sbtn-lrg dl-advs-add-btn githubButton"><i class="fa fa-github"></i>&nbsp;iPython Notebooks on Github</button>
+    </a>
+    {#<p><a href="https://github.com/ubc-library/docs-open-collections-api/tree/master/iPython" link-out></a>https://github.com/ubc-library/docs-open-collections-api/tree/master/iPython</p>#}
 </div>
 
 
