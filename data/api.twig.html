@@ -51,9 +51,9 @@
             <td>Your API Key</td>
             <td>
                 {% if data.user_api_key %}
-                    {{ data.user_api_key }}
+                {{ data.user_api_key }}
                 {% else %}
-                    You haven't yet registered an API key, instructions on how you can are below.
+                You haven't yet registered an API key, instructions on how you can are below.
                 {% endif %}
             </td>
             <td>200req/min</td>
@@ -78,7 +78,7 @@
                    readonly="readonly" clickselect>
         </div>
         <p>An email has been sent to the address entered. <b>Usage rates are limited until the address has been
-                confirmed.</b></p>
+            confirmed.</b></p>
     </div>
 </div>
 <div id="api-requests" class="box">
@@ -90,22 +90,23 @@
         types currently offered are described below.
     </p>
 
-    <h5>Collection</h5>
+    <h5>Collection Metadata</h5>
     <p>
         A collection is a reference to a collection of multiple items indexed in Open Collections. Collections have two
         RESTful routes associated with them, examples are provided below;
     </p>
     <div>
-        <strong>Collection Metadata</strong><br/>
+        <strong>URL Structure</strong><br/>
         The RESTful URL to request a collections metadata is structured as follows:
         <br/>
         <a>{{ data.api_url }}/collections/
-            <ins>:name</ins>
+            <ins>[:name]</ins>
         </a>
         <br/>
         Where
-        <ins>:name</ins>
+        <ins>[:name]</ins>
         is the nickname of a collection in Open Collections.
+        <i>See all the nicknames and descriptions of our collections at <a href="{{base_url}}/docs#reference-collections">'Collection Reference'</a></i>
     </div>
     <br/>
     <div class="api_example">
@@ -114,28 +115,36 @@
         <a href="{{ data.api_url }}/collections/berkpost" link-out>{{ data.api_url }}/collections/berkpost</a>
     </div>
     <br/>
+    <h5>Collection Items List</h5>
+    <p>The collections item list will allow you to traverse through all of a collections items. For larger collections we recommend you use the
+        URL options <a>?limit=</a><ins>[:limit]</ins> and <a>&amp;offset=</a><ins>[:offset]</ins> to prevent slow load times and possible browser crashing.</p>
     <div>
-        <strong>Collection Items</strong><br/>
+        <strong>URL Structure</strong><br/>
         The RESTful URL to request a collections items is structured as follows:
         <br/>
         <a>{{ data.api_url }}/collections/
-            <ins>:name</ins>
+            <ins>[:name]</ins>
             /items</a>
         <br/>
         Where
         <ins>:name</ins>
         is the nickname of a collection in Open Collections.
+
+        <br /> <br />
+        <strong>Additional URL Paramaters</strong><br/>
+        <a>?limit</a> - Set the limit of items to return<br/>
+        <a>&amp;offset</a> - Set the offset of items to start from
     </div>
     <br/>
     <div class="api_example">
-        <strong>Collection Items Example</strong><br/>
-        For your convenience here is an example of a call to get all of the collection berkpost items.<br/>
+        <strong>Collections Item List Example</strong><br/>
+        For your convenience here is an example of a call to get all of the collection berkpost's items.<br/>
         <a href="{{ data.api_url }}/collections/berkpost/items" link-out>{{ data.api_url }}
             /collections/berkpost/items</a>
     </div>
     <br/>
 
-    <h5>Item</h5>
+    <h5>Item Metadata</h5>
     <p>
         An item is a reference to a single piece of content indexed in Open Collections. The content can be, for
         example, a book, an image, a video, etc. The content is digitized from its original, physical source and
@@ -148,24 +157,24 @@
         The RESTful URL to request a collections items is structured as follows:
         <br/>
         <a>{{ data.api_url }}/collections/
-            <ins>:name</ins>
+            <ins>[:name]</ins>
             /items/
-            <ins>:itemId</ins>
+            <ins>[:itemId]</ins>
         </a>
         <br/>
         Where
-        <ins>:name</ins>
+        <ins>[:name]</ins>
         is the nickname of a collection in Open Collections and
-        <ins>:itemId</ins>
+        <ins>[:itemId]</ins>
         is the items identifier.
     </div>
     <br/>
 
     <div class="api_example">
-        <strong>Example</strong><br/>
-        For your convenience here is an example of a call to get all of the collection berkpost items.<br/>
-        <a href="{{ data.api_url }}/collections/berkpost/items/00.00.0000.0056783" link-out>{{ data.api_url }}
-            /collections/berkpost/items/00.00.0000.0056783</a>
+        <strong>Single Item Example</strong><br/>
+        For your convenience here is an example of a call to get a single item from the berkpost collection.<br/>
+        <a href="{{ data.api_url }}/collections/berkpost/items/1.0001623" link-out>{{ data.api_url }}
+            /collections/berkpost/items/1.0001623</a>
     </div>
 
 
@@ -175,7 +184,7 @@
     <h4>Fields</h4>
     <p>
         We have explanations of the <a href="{{ base_url }}/docs#reference-fields" link-out>fields a response
-            returns</a>
+        returns</a>
     </p>
     <h4>Example Response</h4>
 
@@ -196,16 +205,16 @@
 <div id="api-advanced-usage" class="box">
     <h3>Advanced Usage</h3>
     <p>More advanced users that are looking to really dive into our API should check out the following <a
-                href="https://www.elastic.co" link-out>Elastic Search</a> documentation:</p>
+            href="https://www.elastic.co" link-out>Elastic Search</a> documentation:</p>
     <ul>
         <li><a href="https://www.elastic.co/guide/en/elasticsearch/guide/current/search-in-depth.html" link-out>Search
-                In Depth</a></li>
+            In Depth</a></li>
         <li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/search.html" link-out>Search API
-                documentation</a></li>
+            documentation</a></li>
         <li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html" link-out>Query DSL
-                documentation</a></li>
+            documentation</a></li>
         <li><a href="https://www.elastic.co/guide/en/elasticsearch/guide/current/languages.html" link-out>Dealing with
-                Human Language</a></li>
+            Human Language</a></li>
         <li><a href="https://www.elastic.co/guide/en/elasticsearch/guide/current/aggregations.html"
                link-out>Aggregates</a></li>
         <li><a href="https://www.elastic.co/guide/en/elasticsearch/guide/current/geoloc.html" link-out>Geolocation</a>
@@ -217,8 +226,8 @@
     <div class="span9"></div>
     <div class="span3"><a href="https://github.com/ubc-library/docs-open-collections-api/blob/master/data/api.twig.html"
                           target="_blank" class="githubLink">
-            <button class="dl-sbtn-lrg dl-advs-add-btn githubButton"><i class="fa fa-github"></i>&nbsp;Edit this section
-                on Github
-            </button>
-        </a></div>
+        <button class="dl-sbtn-lrg dl-advs-add-btn githubButton"><i class="fa fa-github"></i>&nbsp;Edit this section
+            on Github
+        </button>
+    </a></div>
 </div>
