@@ -6,9 +6,10 @@
     <select id="collectionSelecter">
         <option value="null"> --- Select a collection ---</option>
         {% for collection in data.collections %}
-            <option value="{{ collection.collection_id }}">{{ collection.title }}</option>
+        <option value="{{ collection.collection_id }}">{{ collection.title }}</option>
         {% endfor %}
     </select>
+
     <div class='table-wrap'>
         <table id="endpointsTable">
             <tbody>
@@ -19,18 +20,18 @@
                 <th>Status</th>
             </tr>
             {% for endpoints in data.endpoints %}
-                <tr>
-                    <td>{{ endpoints.method }}</td>
-                    <td>{{ endpoints.endpoint }}</td>
-                    <td>{{ endpoints.description }}</td>
-                    <td>
-                        {% if endpoints.status == 1 %}
-                            <span class="label label-success"><i class="fa fa-power-off online"></i> Online</span>
-                        {% else %}
-                            <span class="label label-danger"><i class="fa fa-power-off online"></i> Offline</span>
-                        {% endif %}
-                    </td>
-                </tr>
+            <tr>
+                <td>{{ endpoints.method }}</td>
+                <td>{{ endpoints.endpoint }}</td>
+                <td>{{ endpoints.description }}</td>
+                <td>
+                    {% if endpoints.status == 1 %}
+                    <span class="label label-success"><i class="fa fa-power-off online"></i> Online</span>
+                    {% else %}
+                    <span class="label label-danger"><i class="fa fa-power-off online"></i> Offline</span>
+                    {% endif %}
+                </td>
+            </tr>
             {% endfor %}
             </tbody>
         </table>
@@ -53,10 +54,10 @@
                 <th>Collection Name</th>
             </tr>
             {% for collection in data.collections %}
-                <tr>
-                    <td>{{ collection.collection_id }}</td>
-                    <td>{{ collection.title }}</td>
-                </tr>
+            <tr>
+                <td>{{ collection.collection_id }}</td>
+                <td>{{ collection.title }}</td>
+            </tr>
             {% endfor %}
             </tbody>
         </table>
@@ -65,7 +66,9 @@
 </div>
 <div id="reference-fields" class="box">
     <h3>Fields</h3>
+
     <p>To view more about our metadata terms please <a href="{{ base_url }}/terms">view this page.</a></p>
+
     <div class="row">
         <div class="span3">
             <button class="dl-btn-sm docsOverflowExpand" id="fieldsOverflowBoxController">Expand/Contract Area</button>
@@ -81,78 +84,70 @@
                 <th>Mapping Documentation</th>
             </tr>
             {% for key,object in data.api_fields %}
-                {% for obj in object %}
-                    <tr>
-                        <td>{{ obj.label }}</td>
-                        <td>{{ key }}</td>
-                        <td><a href="{{ obj.iri }}" target="_blank">{{ obj.iri }}</a></td>
-                    </tr>
-                {% endfor %}
+            {% for obj in object %}
+            <tr>
+                <td>{{ obj.label }}</td>
+                <td>{{ key }}</td>
+                <td><a href="{{ obj.iri }}" target="_blank">{{ obj.iri }}</a></td>
+            </tr>
+            {% endfor %}
             {% endfor %}
             </tbody>
         </table>
     </div>
 </div>
-<div id="reference-headers" class="box">
-    <h3>Headers</h3>
+<div id="reference-output-formats" class="box">
+    <h3>Output Formats</h3>
 
-    <p>Responses from the API are returned as JSON by default, however when doing 'GET' calls for items you can request
-        RDF or JSON-LD (Linked Data) output by using the HTTP 'Accept'
-        header when making your API calls.</p>
+    <p>Responses from the API are returned in JSON by default however there are a number of different formats available via both GET and POST
+        requests.</p>
 
-    <p>Select a format to show the corresponding header and preview the response. If no Accept header is present,
-        regular JSON will be returned by
-        default.</p>
+    <p>
+        <strong>GET Requests</strong><br/>
+        For GET requests you should replace
+        <ins>:outputFormat</ins>
+        in the URL below with the format you want returned:<br/>
+        <a>{{ data.api_url }}/collections/
+            <ins>[:name]</ins>
+            /items/
+            <ins>[:itemId]</ins>
+            /output-format/
+            <ins>[:outputFormat]</ins>
+        </a>
+    </p>
 
+    <p>
+        <strong>POST Requests</strong><br/>
+        For POST requests you should set the
+        <ins>Accept</ins>
+        header to the format you want returned.
+    </p>
     <div class='table-wrap'>
         <table>
             <tbody>
             <tr>
-                <th>HTTP&#8209;Header</th>
-                <th>Value</th>
-                <th>Returns</th>
-            </tr>
-            <tr>
-                <td>Accept</td>
-                <td>application/json</td>
-                <td>JSON</td>
-            </tr>
-            <tr>
-                <td>Accept</td>
-                <td>application/ld+json</td>
-                <td>JSON-LD</td>
-            </tr>
-            <tr>
-                <td>Accept</td>
-                <td>application/rdf</td>
-                <td>RDF XML (Pretty)</td>
-            </tr>
-            <tr>
-                <td>Accept</td>
-                <td>application/rdf+json</td>
-                <td>RDF/JSON</td>
-            </tr>
-            <tr>
-                <td>Accept</td>
-                <td>application/rdf+turtle</td>
-                <td>Turtle</td>
-            </tr>
-            <tr>
-                <td>Accept</td>
-                <td>application/rdf+ntriples</td>
-                <td>N-Triples</td>
+                <th>Description</th>
+                <th>GET Value</th>
+                <th>POST Value</th>
             </tr>
             </tbody>
+            {% for key,object in data.api_output_formats %}
+            <tr>
+                <td>{{object.description}}</td>
+                <td>{{key}}</td>
+                <td>{{object.content-type}}</td>
+            </tr>
+            {% endfor %}
         </table>
     </div>
 </div>
 <div class="row-fluid">
     <div class="span9"></div>
     <div class="span3"><a
-                href="https://github.com/ubc-library/docs-open-collections-api/blob/master/data/reference.twig.html"
-                target="_blank" class="githubLink">
-            <button class="dl-sbtn-lrg dl-advs-add-btn githubButton"><i class="fa fa-github"></i>&nbsp;Edit this section
-                on Github
-            </button>
-        </a></div>
+            href="https://github.com/ubc-library/docs-open-collections-api/blob/master/data/reference.twig.html"
+            target="_blank" class="githubLink">
+        <button class="dl-sbtn-lrg dl-advs-add-btn githubButton"><i class="fa fa-github"></i>&nbsp;Edit this section
+            on Github
+        </button>
+    </a></div>
 </div>
