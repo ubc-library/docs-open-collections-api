@@ -102,8 +102,8 @@
     <p>Responses from the API are returned in JSON by default however there are a number of different formats available via both GET and POST
         requests.</p>
 
+    <h4>GET Requests</h4>
     <p>
-        <strong>GET Requests</strong><br/>
         For GET requests you should replace
         <ins>:outputFormat</ins>
         in the URL below with the format you want returned:<br/>
@@ -116,12 +116,13 @@
         </a>
     </p>
 
+    <h4>POST Requests</h4>
     <p>
-        <strong>POST Requests</strong><br/>
         For POST requests you should set the
-        <ins>Accept</ins>
+        HTTP <ins>Accept</ins>
         header to the format you want returned.
     </p>
+    <h4>Available Formats</h4>
     <div class='table-wrap'>
         <table>
             <tbody>
@@ -130,14 +131,14 @@
                 <th>GET Value</th>
                 <th>POST Value</th>
             </tr>
-            </tbody>
-            {% for key,object in data.api_output_formats %}
+            {% for key, object in data.api_output_formats %}
             <tr>
-                <td>{{object.description}}</td>
+                <td>{{object['description']|capitalize}}</td>
                 <td>{{key}}</td>
-                <td>{{object.content-type}}</td>
+                <td>{{object['content-type']}}</td>
             </tr>
             {% endfor %}
+            </tbody>
         </table>
     </div>
 </div>
