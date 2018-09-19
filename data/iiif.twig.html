@@ -1,32 +1,31 @@
 <p id="iiif">
-    To access our images programmatically you will need to learn about the <a href="//iiif.io" link-out>International
-        Image Interoperability Framework</a>.
+    UBC Open Collections uses the <a href="//iiif.io" link-out>International Image Interoperability Framework</a> ("IIIF") standard to display image content in the site, and provides access to this API through the <code>
+        <a href="https://iiif.library.ubc.ca" link-out>https://iiif.library.ubc.ca</a></code> endpoint. This endpoint can return images resized and modified to specific specifications as well as metadata ("manifests") associated with the images, and can be used to view content in a number of different
+    <a href="http://iiif.io/apps-demos/">IIIF-compatible viewers</a>.
 </p>
-<p>
-    The URL of the IIIF server is: <strong><a href="https://iiif.library.ubc.ca"
-                                              link-out>https://iiif.library.ubc.ca</a></strong>
-</p>
-<div class="api_example">
-    <strong>Note:</strong><br>
-    One thing you will need to remember when working with results from the Open Collections API and using the IIIF API
-    is that item identifiers recieved from Open Collections need to have the period replaced with a dash to work with
-    the IIIF API. For instance '1.0001258' would become '1-0001258'
-</div>
 <div id="iiif-documentation" class="box">
-    <h3>Documentation</h3>
+    <p>Learn more about the IIIF standard, and the specific parameters available here:</p>
     <ul>
         <li><a href="http://iiif.io/api/image/2.0/" link-out>IIIF Image API 2.0 Documentation</a></li>
         <li><a href="http://iiif.io/api/presentation/2.0/" link-out>IIIF Presentation API 2.0 Documentation</a></li>
     </ul>
 </div>
 
+<div class="api_example">
+    <strong>Note:</strong><br>
+    When working with results from the Open Collections Metadata API
+    the item identifiers need to have the dot replaced with a dash to work with
+    the IIIF API. For instance '1.0001258' would become '1-0001258'
+</div>
+
 <div id="iiif-example" class="box">
-    <h3>Example</h3>
-    <p>So say we find <a href="{{ base_url }}/collections/wwposters/items/1.0038290" link-out>this wonderful item</a>
+    <h4>Example</h4>
+    <p>Say we find <a href="{{ base_url }}/collections/wwposters/items/1.0038290" link-out>this wonderful item</a>
         about winning the war by eating less bread and want to view the item in IIIF.</p>
     <p>
         First you'll need to look at the 'Embed' accordion on the item's page and if you open that up you will see the
-        following link: <a href="http://iiif.library.ubc.ca/presentation/cdm.wwposters.1-0038290/manifest" link-out>http://iiif.library.ubc.ca/presentation/cdm.wwposters.1-0038290/manifest</a>
+        following link: <pre><code><a href="http://iiif.library.ubc.ca/presentation/cdm.wwposters.1-0038290/manifest"
+                                      link-out>http://iiif.library.ubc.ca/presentation/cdm.wwposters.1-0038290/manifest</a> </code></pre>
     </p>
     <p>
         This will give us the manifest for the image/s in JSON, which includes the metadata and information about the
@@ -34,7 +33,7 @@
     </p>
 
     <div class="row">
-        <div class="span3">
+        <div class="span3 pull-right">
             <button class="dl-btn-sm docsOverflowExpand" id="iiifSequenceOverflowBoxController">Expand/Contract Area
             </button>
         </div>
@@ -428,22 +427,24 @@
     </div>
     <br/>
     <p>
-        From the JSON we can see the property 'thumbnail' which in this instance has the value: <br/><a
-                href="http://iiif.library.ubc.ca/image/cdm.wwposters.1-0038290.0000/full/80,100/0/default.jpg" link-out>http://iiif.library.ubc.ca/image/cdm.wwposters.1-0038290.0000/full/80,100/0/default.jpg</a>
+        From the JSON we can see the property 'thumbnail' which in this instance has the value: <br/>
+    <pre><code><a
+                    href="http://iiif.library.ubc.ca/image/cdm.wwposters.1-0038290.0000/full/80,100/0/default.jpg"
+                    link-out>http://iiif.library.ubc.ca/image/cdm.wwposters.1-0038290.0000/full/80,100/0/default.jpg</a></code></pre>
     </p>
     <p>
         Now we can start to see how we could manipulate the URL to modify the image that is returned to us: <br/>
-        <strong>http://iiif.library.ubc.ca/image/cdm.wwposters.1-0038290.0000/[:region]/[:width],[:height]/[:rotation]/[:quality].[:format]</strong>
+    <pre><code>http://iiif.library.ubc.ca/image/cdm.wwposters.1-0038290.0000/[:region]/[:width],[:height]/[:rotation]/[:quality].[:format]</code></pre>
     </p>
     <p>
         To find out what qualities and formats the image supports you can just remove everything after the identifier
         and inspect just the image metadata for instance: <br />
-        <a href="http://iiif.library.ubc.ca/image/cdm.wwposters.1-0038290.0000" link-out>http://iiif.library.ubc.ca/image/cdm.wwposters.1-0038290.0000</a> <br />
+    <pre><code><a href="http://iiif.library.ubc.ca/image/cdm.wwposters.1-0038290.0000" link-out>http://iiif.library.ubc.ca/image/cdm.wwposters.1-0038290.0000</a></code></pre> <br />
         For this image that would return the following JSON:
     </p>
 
     <div class="row">
-        <div class="span3">
+        <div class="span3 pull-right">
             <button class="dl-btn-sm docsOverflowExpand" id="iiifImageInfoOverflowBoxController">Expand/Contract Area
             </button>
         </div>
@@ -528,35 +529,18 @@
 </div>
 
 <div id="iiif-wallpaper" class="box">
-    <h3>Wallpaper</h3>
+    <h4>Example: Requesting a Wallpaper</h4>
     <div class="api_example">
-        <strong>Note:</strong><br>
-        If you just want a wallpaper we recommend that you use the image viewer on your item of choice to first crop the image (using the crop tool) and then click the 'image' icon to get directed to the IIIF link for the image. <br/> From there you can then enter your screen resolution in the URL and save the image.
+        If you just want a wallpaper we recommend that you use the image viewer on your item of choice to first crop the image (using the crop tool) and then click the 'image' icon to get directed to the IIIF URL for the image. From there you can then enter your screen resolution in the URL and save the image.
     </div>
     <p>
-        So now that we've gone through all that work, lets request a nice sized desktop background: <br />
-       <a href="http://iiif.library.ubc.ca/image/cdm.wwposters.1-0038290/full/1024,768/0/default.png" link-out> http://iiif.library.ubc.ca/image/cdm.wwposters.1-0038290/full/1024,768/0/default.png</a>
-       </p>
-    <p>Of course since our image is sort of stretched now as it was portrait originally, we could instead request a much larger image and crop the image ourselves using some image editing software: <br />
-        <a href="http://iiif.library.ubc.ca/image/cdm.wwposters.1-0038290/full/1900,/0/default.png" link-out>http://iiif.library.ubc.ca/image/cdm.wwposters.1-0038290/full/1900,/0/default.png</a> <br />
+        Once you've found an image you like, you can construct a URL like this to request a nice sized desktop background: <br />
+    <pre><code><a href="http://iiif.library.ubc.ca/image/cdm.tokugawa.1-0167752.0000/full/1600,900/0/default.png"
+                   link-out>http://iiif.library.ubc.ca/image/cdm.tokugawa.1-0213163/full/1600,900/0/default.png</a></code></pre>
     </p>
     <p>
-        Or alternatively we could have just chosen an image that was already in landscape mode so this works much easier: <br />
-        <a href="http://iiif.library.ubc.ca/image/cdm.tokugawa.1-0167752.0000/full/1600,900/0/default.png" link-out>http://iiif.library.ubc.ca/image/cdm.tokugawa.1-0213163/full/1600,900/0/default.png</a>
+        If we wanted to remove the excess borders we could pass through the [:region] part of the IIIF url: <br />
+    <pre><code><a href="http://iiif.library.ubc.ca/image/cdm.tokugawa.1-0167752.0000/469,483,10323,4856/1600,900/0/default.png"
+                   link-out> http://iiif.library.ubc.ca/image/cdm.tokugawa.1-0213163/1145,374,9234,4645/1600,900/0/default.png</a></code></pre>
     </p>
-    <p>
-        Last but not least, if we wanted to remove the excess borders we could pass through the [:region] part of the IIIF url: <br />
-       <a href="http://iiif.library.ubc.ca/image/cdm.tokugawa.1-0167752.0000/469,483,10323,4856/1600,900/0/default.png" link-out> http://iiif.library.ubc.ca/image/cdm.tokugawa.1-0213163/1145,374,9234,4645/1600,900/0/default.png</a>
-    </p>
-</div>
-
-<div class="row-fluid">
-    <div class="span9"></div>
-    <div class="span3"><a
-                href="https://github.com/ubc-library/docs-open-collections-api/blob/master/data/iiif.twig.html"
-                target="_blank" class="githubLink">
-            <button class="dl-sbtn-lrg dl-advs-add-btn githubButton"><i class="fa fa-github "></i>&nbsp;Edit this
-                section on Github
-            </button>
-        </a></div>
 </div>

@@ -1,31 +1,24 @@
-<p id="overview">
-    Welcome to the Open Collections API Documentation ! Below you'll find tutorials that will teach you how to use the Open Collections API and reference documentation for all its moving parts.
+<p>
+    Here you'll find references and tutorials to help you get started using the Open Collections API to access data directly from our system. If you have any questions or feedback or questions, or want to share work that you've done using the API, please
+    <a href="">get in touch</a>!
 </p>
-<div id="overview-quickstart" class="box">
-    <h3>Where To Go</h3>
+<div id="overview-quickstart" class="box highlight-box yellow">
+    <h3 id="quick-start">Quick Start</h3>
+    <p>Know your way around an API and want to dive right in? Here's the essentials:</p>
     <ul>
-        <li>If you haven't used an API before, head on over to <a href="{{base_url}}/docs#api-basics">API Basics</a> which will get you started on accessing our data.</li>
-        <li>If you have already used APIs and you just want to know how to get at our data, skip the basics and head straight on over to our <a href="{{base_url}}/docs#api-requests">Requests section</a> and take a look a our <a
-                href="{{base_url}}/docs#reference">Reference section</a>. (You'll need an <a href="{{base_url}}/docs#api-keys">API key</a>
-            first.)</li>
-
-        <li>Once you've made a request, you might need some help making sense of what it all means.  In <a href="{{base_url}}/docs#api-responses">responses</a>, we explore the structure of objects and the fields within those objects that the API returns.</li>
-        <li>Now you should be ready to start building something with our API, however you might like to know the small print, so go check out our API's policies.</li>
-        <li>Visit and read our <a href="{{base_url}}/terms_of_use" target="_self">terms of use page</a>, before using the API.</li>
-        <li>Reach us at <a href="mailto:library.opencollections@ubc.ca" title="Open Collections Email">library.opencollections@ubc.ca</a> for inquiries. <em>(or if you make something cool you'd like us to feature)</em></li>
+        <li><a href="{{data.api_url}}" target="_blank" link-out>{{data.api_url}}</a> is the base URL of the Open Collections API.</li>
+        <li><a href="{{base_url}}/docs#register-api-key" link-out>Register for an API key</a> and append &api_key=<ins>[:YOUR_API_KEY]</ins> (where <ins>[:YOUR_API_KEY]</ins> to any requests you make.</li>
+        <li>Use the open collections REST API to request
+            <a link-out href="{{base_url}}/docs#item-endpoints">item</a> and
+            <a link-out href="{{base_url}}/docs#collections-endpoints">collection</a> metadata and
+            <a link-out href="{{base_url}}/docs#search-endpoint">search the collections</a>.</li>
+        <li>Review the
+            <a link-out href="{{ base_url }}/docs#reference">API Reference</a> section for a full list of search endpoints, collection nicknames, metadata fields, and output formats.</li>
+        <li>Use the
+            <a link-out href="{{ base_url }}/docs#iiif">Open Collections IIIF Endpoint</a> to request images for many items in the collections or to open Open Collections content in other IIIF-compatible viewers.</li>
+        <li>Please review and comply with our
+            <a link-out href="{{ base_url }}/terms_of_use" target="_self">terms of use</a>.
+        </li>
+        </li>
     </ul>
-    <h3 id="overview-essentials">The Essentials</h3>
-    <p>If you need to start straight away, here is how:</p>
-    <ul>
-        <li><a href="{{data.api_url}}" target="_blank">{{data.api_url}}</a> is the base URL of the Open Collections API.</li>
-        <li>In order to pass requests to the API, you'll need to <a href="{{base_url}}/docs#register-api-key" link-out>register an API key</a> first. You also need to append &api_key=<ins>[:YOUR_API_KEY]</ins> (where <ins>[:YOUR_API_KEY]</ins> is the API key you received after <a href="{{base_url}}/docs#register-api-key">registering for the Open Collections API Key</a>) to any requests you make.</li>
-        <li>All records are returned by default as JSON-LD objects, however you can request other formats as described over at <a href="{{base_url}}/docs#reference-output-formats" link-out>output formats</a></li>
-        <li>We've got lots of <a href="{{base_url}}/docs#reference-collections">collections</a> &amp; <a href="{{base_url}}/docs#reference-fields">fields</a> you can query, and a whole lot of <a href="{{base_url}}/docs#api-requests">ways you can query them.</a></li>
-        <li>The main resources the API returns are <strong>Collection Metadata</strong> and <strong>Item Metadata</strong>, for <strong>Image Metadata</strong> or image downloads you will need to check out our <a href="{{base_url}}/docs#iiif-documentation">IIIF documentation</a>
-            <em>(Media API for audio &amp; video coming soon)</em></li>
-    </ul>
-</div>
-<div class="row-fluid">
-    <div class="span9"></div>
-    <div class="span3"> <a href="https://github.com/ubc-library/docs-open-collections-api/blob/master/data/overview.twig.html" target="_blank" class="githubLink"><button class="dl-sbtn-lrg dl-advs-add-btn githubButton"><i class="fa fa-github "></i>&nbsp;Edit this section on Github</button></a></div>
 </div>

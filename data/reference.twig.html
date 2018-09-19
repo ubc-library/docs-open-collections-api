@@ -1,8 +1,7 @@
-<div id="reference-endpoints" class="box">
-    <h3>Endpoints</h3>
+    <h3 id="reference-endpoints">API Endpoints</h3>
 
-    <p>The following API endpoints are available for use</p>
-    <label for="collectionSelecter">Collection:</label>
+    <p>The following endpoints are available for use:</p>
+    <label for="collectionSelecter">You can select a collection from the drop-down to auto-fill the collection_identifier (or "nickname").</label>
     <select id="collectionSelecter">
         <option value="null"> --- Select a collection ---</option>
         {% for collection in data.collections %}
@@ -36,15 +35,7 @@
             </tbody>
         </table>
     </div>
-</div>
-<div id="reference-collections" class="box">
-    <h3>Collections</h3>
-
-    <div class="row">
-        <div class="span3">
-            <button class="dl-btn-sm docsOverflowExpand" id="collectionsOverflowBoxController">Expand/Contract Area</button>
-        </div>
-    </div>
+    <h3 id="reference-collections">Collections</h3>
 
     <div class="docsOverflowBox" id="collectionsOverflowBox">
         <table>
@@ -62,18 +53,16 @@
             </tbody>
         </table>
     </div>
-
-</div>
-<div id="reference-fields" class="box">
-    <h3>Fields</h3>
-
-    <p>To view more about our metadata terms please <a href="{{ base_url }}/terms">view this page.</a></p>
-
     <div class="row">
-        <div class="span3">
-            <button class="dl-btn-sm docsOverflowExpand" id="fieldsOverflowBoxController">Expand/Contract Area</button>
+        <div class="span3 pull-right">
+            <button class="dl-btn-sm docsOverflowExpand" id="collectionsOverflowBoxController">Expand/Contract Area
+            </button>
         </div>
     </div>
+
+    <h3 id="reference-fields">Fields</h3>
+
+    <p>To view more about our metadata terms please <a href="{{ base_url }}/terms">view this page.</a></p>
 
     <div class="docsOverflowBox" id="fieldsOverflowBox">
         <table>
@@ -84,23 +73,47 @@
                 <th>Mapping Documentation</th>
             </tr>
             {% for key,object in data.api_fields %}
-            {% for obj in object %}
-            <tr>
-                <td>{{ obj.label }}</td>
-                <td>{{ key }}</td>
-                <td><a href="{{ obj.iri }}" target="_blank">{{ obj.iri }}</a></td>
-            </tr>
-            {% endfor %}
+                {% for obj in object %}
+                <tr>
+                    <td>{{ obj.label }}</td>
+                    <td>{{ key }}</td>
+                    <td><a href="{{ obj.iri }}" target="_blank">{{ obj.iri }}</a></td>
+                </tr>
+                {% endfor %}
             {% endfor %}
             </tbody>
         </table>
     </div>
-</div>
-<div id="reference-output-formats" class="box">
-    <h3>Output Formats</h3>
+    <div class="row">
+        <div class="span3 pull-right">
+            <button class="dl-btn-sm docsOverflowExpand" id="fieldsOverflowBoxController">Expand/Contract Area</button>
+        </div>
+    </div>
 
-    <p>Responses from the API are returned in JSON by default, however there are a number of different formats available which we will show you how
-        to request below.</p>
+    <h3 id="reference-search-params">Search Parameters</h3>
+    <p>The open collections <code>{{ data.search_endpoint }}</code> endpoint accepts the following paremeters in GET requests:</p>
+    <table>
+        <tbody>
+        <tr>
+            <th>Parameter</th>
+            <th>Description</th>
+            <th>Default Value</th>
+            <th>Notes</th>
+        </tr>
+        {% for key,obj in data.api_params %}
+            <tr>
+                <td>{{ key }}</td>
+                <td>{{ obj.description | capitalize }}</td>
+                <td>{{ obj.default }}</td>
+                <td>{{ obj.notes | capitalize }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <h3 id="reference-output-formats">Output Formats</h3>
+
+    <p>Responses from the API are returned in JSON by default however there are a number of different formats available which we will show you how
+        to request for below.</p>
 
     <h4>GET Requests</h4>
     <p>
@@ -141,14 +154,3 @@
             </tbody>
         </table>
     </div>
-</div>
-<div class="row-fluid">
-    <div class="span9"></div>
-    <div class="span3"><a
-            href="https://github.com/ubc-library/docs-open-collections-api/blob/master/data/reference.twig.html"
-            target="_blank" class="githubLink">
-        <button class="dl-sbtn-lrg dl-advs-add-btn githubButton"><i class="fa fa-github"></i>&nbsp;Edit this section
-            on Github
-        </button>
-    </a></div>
-</div>

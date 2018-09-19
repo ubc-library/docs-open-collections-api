@@ -220,7 +220,7 @@ print(json.dumps(items))
             </select></div>
         <div class="span5">
             <a href="https://github.com/ubc-library/docs-open-collections-api/tree/master/scripts/harvest_collection_full_text"
-               target="_blank" class="githubLink">
+                    target="_blank" class="githubLink">
                 <button class="dl-sbtn-lrg dl-advs-add-btn githubButton"><i class="fa fa-github"></i>&nbsp;View Scripts
                     on Github
                 </button>
@@ -389,7 +389,7 @@ with open('full-text.csv', 'w+b') as csvfile:
         </div>
         <div class="span5">
             <a href="https://github.com/ubc-library/docs-open-collections-api/blob/master/scripts/collection_downloader/collection_downloader.php"
-               target="_blank"  class="githubLink">
+                                  target="_blank"  class="githubLink">
                 <button class="dl-sbtn-lrg dl-advs-add-btn githubButton"><i class="fa fa-github"></i>&nbsp;View Script on Github</button>
             </a>
         </div>
@@ -400,11 +400,11 @@ with open('full-text.csv', 'w+b') as csvfile:
 // Replace this with your API Key
 $apiKey = 'ac40e6c2cb345593ed1691e0a8b601bba398e42d85f81f893c5ab709cec63c6c';
 // Replace this with where you want the downloads to go
-$dir = '/tmp/downloads';
+$dir = '/ocdata/downloads';
 
 ini_set('display_errors', 1);
 ini_set('log_errors', 1);
-ini_set('error_log', '/tmp/oc-downloader.log');
+ini_set('error_log', '/ocdata/oc-downloader.log');
 
 function displayHelpMessage()
 {
@@ -576,14 +576,4 @@ exit;
         <button class="dl-sbtn-lrg dl-advs-add-btn githubButton"><i class="fa fa-github"></i>&nbsp;iPython Notebooks on Github</button>
     </a>
     {#<p><a href="https://github.com/ubc-library/docs-open-collections-api/tree/master/iPython" link-out></a>https://github.com/ubc-library/docs-open-collections-api/tree/master/iPython</p>#}
-</div>
-
-
-<div class="row-fluid">
-    <div class="span9"></div>
-    <div class="span3"><a
-                href="https://github.com/ubc-library/docs-open-collections-api/blob/master/data/scripts.twig.html"
-                target="_blank"  class="githubLink">
-            <button class="dl-sbtn-lrg dl-advs-add-btn githubButton"><i class="fa fa-github"></i>&nbsp;Edit this section on Github</button>
-        </a></div>
 </div>

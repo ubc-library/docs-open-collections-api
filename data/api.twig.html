@@ -1,6 +1,6 @@
-<div id="api-basics" class="box">
-    <h3>API Basics</h3>
-    <h4>What is an API?</h4>
+<div  class="box">
+    <h2 id="api-basics">API Basics</h2>
+    <h3>What is an API?</h3>
     <p>
         At its most basic, an API, or Application Programming Interface, is made up of a set of defined methods that
         someone can use to communicate with a (often complex) software system, and get back responses in a way that a
@@ -19,22 +19,29 @@
         return a correct response. This is called a <a href="http://en.wikipedia.org/wiki/RESTful" target="_blank">RESTful</a>
         approach to API design and is employed by the Open Collections API.
     </p>
-    <h4>How do I use it?</h4>
+    <h3>How do I use it?</h3>
     <p>
-        To get started using the Open Collections API:
+
     </p>
     <ol>
         <li><a href="{{ base_url }}/docs#register-api-key" link-out>Register an API Key</a></li>
-        <li>Use your web browser's URL bar or a browser plugin like <a href="https://www.getpostman.com/"
-                                                                       target="_blank">Postman</a> to make a request
+        <li>Construct a query to request item and collection metadata or search results</li>
+        <li>Use your web browser, a browser plugin like <a href="https://www.getpostman.com/"  target="_blank">Postman</a>, or your custom code to make your request
         </li>
         <li>Read the <a href="{{ base_url }}/docs#api-responses" link-out>response</a></li>
     </ol>
-</div>
-<div id="api-keys" class="box">
-    <h3>API Keys</h3>
+
+    <h3 id="api-keys">API Keys</h3>
     <p>To control abuse, users will need to register their email address to receive an API Key (much like DPLA).<br/>
         <em> Users are also constrained to no more than 200 requests per minute. </em></p>
+    {#{% if not data.user_api_key %}#}
+    <div class="box highlight-box">
+        <h5 id="register-api-key">Register an API Key</h5>
+            <api-key-form></api-key-form>
+    </div>
+    <br>
+    {#{% endif %}#}
+
     <table>
         <tbody>
         <tr>
@@ -51,183 +58,204 @@
             <td>Your API Key</td>
             <td>
                 {% if data.user_api_key %}
-                {{ data.user_api_key }}
+                    {{ data.user_api_key }}
                 {% else %}
-                You haven't yet registered an API key, instructions on how you can are below.
+                    You haven't registered an API key.
                 {% endif %}
             </td>
             <td>200req/min</td>
         </tr>
         </tbody>
     </table>
-</div>
-<div id="register-api-key" class="box">
-    <h3>Registering an API Key</h3>
-    <div class="email-form" ng-hide="emailEntered" style="clear:both;">
-        <p>Register your email address with us to receive an <strong>API key</strong>.</p>
-        <input id="email-input" type="email" placeholder="Email address" ng-model="email" aria-label="Email Input"
-               style="width:300px;float:left;">
-        <button id="email-submit" class="dl-btn" ng-click="getApiKey();" aria-label="Submit Button"
-                style="width:200px;">Submit
-        </button>
-    </div>
-    <div class="email-success ng-hide" ng-show="emailEntered">
-        <p><strong>API Key:</strong></p>
-        <div class="row-fluid">
-            <input class="span12 monospace copycursor" type="text" ng-model="apiKey" placeholder="API Key"
-                   readonly="readonly" clickselect>
-        </div>
-        <p>An email has been sent to the address entered. <b>Usage rates are limited until the address has been
-            confirmed.</b></p>
-    </div>
-</div>
-<div id="api-requests" class="box">
-    <h3>Requests</h3>
-    <p>The base URL of the API is: <a href="{{ data.api_url }}" link-out>{{ data.api_url }}</a></p>
-    <h4>Resource Types</h4>
+
+    <h3 id="basic-request">Constructing a Request</h3>
     <p>
-        When you formulate a REST query, you have to decide which resource type you want to access. The two resource
-        types currently offered are described below.
+        Most data from the Open Collections API can be accessed with simple HTTP GET requests. These type of requests
+        look essentially like the URL of a regular web page, but return data objects rather than HTML markup. These URLs
+        can have two parts:
     </p>
-
-    <h5>Collection Metadata</h5>
-    <p>
-        A collection is a reference to a collection of multiple items indexed in Open Collections. Collections have two
-        RESTful routes associated with them, examples are provided below;
-    </p>
-    <div>
-        <strong>URL Structure</strong><br/>
-        The RESTful URL to request a collections metadata is structured as follows:
-        <br/>
-        <a>{{ data.api_url }}/collections/
-            <ins>[:name]</ins>
-        </a>
-        <br/>
-        Where
-        <ins>[:name]</ins>
-        is the nickname of a collection in Open Collections.
-        <i>See all the nicknames and descriptions of our collections at <a href="{{base_url}}/docs#reference-collections">'Collection Reference'</a></i>
-    </div>
-    <br/>
-    <div class="api_example">
-        <strong>Collection Metadata Example</strong><br/>
-        For your convenience here is an example of a call to get the collection berkpost's metadata.<br/>
-        <a href="{{ data.api_url }}/collections/berkpost" link-out>{{ data.api_url }}/collections/berkpost</a>
-    </div>
-    <br/>
-    <h5>Collection Items List</h5>
-    <p>The collections item list will allow you to traverse through all of a collections items. For larger collections we recommend you use the
-        URL options <a>?limit=</a><ins>[:limit]</ins> and <a>&amp;offset=</a><ins>[:offset]</ins> to prevent slow load times and possible browser crashing.</p>
-    <div>
-        <strong>URL Structure</strong><br/>
-        The RESTful URL to request a collections items is structured as follows:
-        <br/>
-        <a>{{ data.api_url }}/collections/
-            <ins>[:name]</ins>
-            /items</a>
-        <br/>
-        Where
-        <ins>:name</ins>
-        is the nickname of a collection in Open Collections.
-
-        <br /> <br />
-        <strong>Additional URL Paramaters</strong><br/>
-        <a>?limit</a> - Set the limit of items to return<br/>
-        <a>&amp;offset</a> - Set the offset of items to start from
-    </div>
-    <br/>
-    <div class="api_example">
-        <strong>Collections Item List Example</strong><br/>
-        For your convenience here is an example of a call to get all of the collection berkpost's items.<br/>
-        <a href="{{ data.api_url }}/collections/berkpost/items" link-out>{{ data.api_url }}
-            /collections/berkpost/items</a>
-    </div>
-    <br/>
-
-    <h5>Item Metadata</h5>
-    <p>
-        An item is a reference to a single piece of content indexed in Open Collections. The content can be, for
-        example, a book, an image, a video, etc. The content is digitized from its original, physical source and
-        uploaded to an online repository. After retrieving items, developers can display or follow links to their
-        original online digital records.
-    </p>
-
-    <div>
-        <strong>Structure</strong><br/>
-        The RESTful URL to request a collections items is structured as follows:
-        <br/>
-        <a>{{ data.api_url }}/collections/
-            <ins>[:name]</ins>
-            /items/
-            <ins>[:itemId]</ins>
-        </a>
-        <br/>
-        Where
-        <ins>[:name]</ins>
-        is the nickname of a collection in Open Collections and
-        <ins>[:itemId]</ins>
-        is the items identifier.
-    </div>
-    <br/>
-
-    <div class="api_example">
-        <strong>Single Item Example</strong><br/>
-        For your convenience here is an example of a call to get a single item from the berkpost collection.<br/>
-        <a href="{{ data.api_url }}/collections/berkpost/items/1.0001623" link-out>{{ data.api_url }}
-            /collections/berkpost/items/1.0001623</a>
-    </div>
-
-
-</div>
-<div id="api-responses" class="box">
-    <h3>Responses</h3>
-    <h4>Fields</h4>
-    <p>
-        We have explanations of the <a href="{{ base_url }}/docs#reference-fields" link-out>fields a response
-        returns</a>
-    </p>
-    <h4>Example Response</h4>
-
-    <div class="row">
-        <div class="span3">
-            <button class="dl-btn-sm docsOverflowExpand" id="apiResponseOverflowBoxController">Expand/Contract Area</button>
-        </div>
-    </div>
-
-    <div class="docsOverflowBox" id="apiResponseOverflowBox">
-        <?prettify?>
-            <pre class="prettyprint lang-json json" id="api_response">
-
-            </pre>
-    </div>
-</div>
-
-<div id="api-advanced-usage" class="box">
-    <h3>Advanced Usage</h3>
-    <p>More advanced users that are looking to really dive into our API should check out the following <a
-            href="https://www.elastic.co" link-out>Elastic Search</a> documentation:</p>
     <ul>
-        <li><a href="https://www.elastic.co/guide/en/elasticsearch/guide/current/search-in-depth.html" link-out>Search
-            In Depth</a></li>
-        <li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/search.html" link-out>Search API
-            documentation</a></li>
-        <li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html" link-out>Query DSL
-            documentation</a></li>
-        <li><a href="https://www.elastic.co/guide/en/elasticsearch/guide/current/languages.html" link-out>Dealing with
-            Human Language</a></li>
-        <li><a href="https://www.elastic.co/guide/en/elasticsearch/guide/current/aggregations.html"
-               link-out>Aggregates</a></li>
-        <li><a href="https://www.elastic.co/guide/en/elasticsearch/guide/current/geoloc.html" link-out>Geolocation</a>
+        <li>A <strong> URL</strong> or <strong>"endpoint"</strong> that indicates where to direct the query. The Open
+            Collections API base URL is:
+            <a href="{{ data.api_url }}" link-out>{{ data.api_url }}</a>
+            . See below for a full list of available
+            <a href="{{ base_url }}/docs#reference-endpoints">endpoints</a>
+            .
+
+        </li>
+        <li>A <strong>query string</strong> consisting of parameters that describe the data being requested. This is
+            used for search requests.
         </li>
     </ul>
-</div>
 
-<div class="row-fluid">
-    <div class="span9"></div>
-    <div class="span3"><a href="https://github.com/ubc-library/docs-open-collections-api/blob/master/data/api.twig.html"
-                          target="_blank" class="githubLink">
-        <button class="dl-sbtn-lrg dl-advs-add-btn githubButton"><i class="fa fa-github"></i>&nbsp;Edit this section
-            on Github
-        </button>
-    </a></div>
+    <h3 id="basic-response">Parsing A Response</h3>
+    <p>The Open Collections API returns responses in
+        <a href="https://www.json.org/">JSON</a>
+        format by default, and some endpoints can return other formats on request. See the API Reference section for
+        more details.
+    </p>
+    <p>Tip: Browser extensions such as the Chrome
+        <a href="https://chrome.google.com/webstore/detail/json-formatter/bcjindcccaagfpapjjmafapmmgkkhgoa?hl=en">JSON
+            Formatter
+        </a>
+        can make viewing and working with JSON in your browser much easier.
+    </p>
+    <p>Tip: JSON stores data in 'objects,' that do not always translate easily into tabular formats, but tools such as
+        this
+        <a href="http://www.convertcsv.com/json-to-csv.htm">JSON to CSV converter</a>
+        or
+        <a href="http://openrefine.org/">Open Refine</a>
+        can help you get API data into a spreadsheet or table if that's what you need.
+    </p>
+</div>
+<hr>
+<div class="box">
+    <h2 id="using-the-api">Using the Open Collections API</h2>
+    <h3 id="metadata-requests">Metadata Endpoints</h3>
+    <p>Collection and item metadata is requested from the Open Collections API by querying specifically structured endpoints. All metadata endpoints begin with the API base url, <code>{{ data.api_url }}</code>, followed by a specific path for the collection and item being requested.</p>
+
+    <h4 id="collections-endpoints">Collections</h4>
+    <p>
+        A collection is a reference to a set of items indexed in Open Collections. Collections have two
+        RESTful endpoints associated with them, a <code>/collections/</code> endpoint that returns information about the collection, and and a <code>/collections/.../items/</code> endpoint that lists the contents of the collection.
+    </p>
+        <h5>Collection Metadata</h5>
+        <p>The collection metadata endpoints return data describing the contents of a collection.</p>
+        <div class="highlight-box yellow">
+            <p>The collections endpoints are constructed as follows, where
+                <code>[:name]</code>
+                is the nickname of a collection in Open Collections:
+                </p>
+            <p><pre><code>{{ data.api_url }}/collections/<ins>[:name]</ins></code></pre>
+            </p>
+            <p>For example, the following endpoint returns the metadata associated with the Berkeley Posters Collection:
+                <pre><code><a href="{{ data.api_url }}/collections/berkpost" link-out>{{ data.api_url }}/collections/berkpost</a></code></pre>
+            </p>
+        </div>
+    <br>
+    <p>
+        Mappings for all collection nicknames are available <a href="{{base_url}}/docs#reference-collections">here</a>.
+        </p>
+
+
+    <h5>Collection Items</h5>
+    <p>The collections items endpoints return a list all items in a collections. There are two types of collection items endpoints, one returns a simple list of all items in a collection (ids only), and the other returns a paginated list of all items in the collection with a richer subset of metadata.
+
+    <div class="highlight-box yellow">
+        <p>The collection items endpoints to return a full list of items are constructed as follows, where <code><ins>[:name]</ins></code> is the nickname of the collection:</p>
+    <p>
+        <pre><code>{{ data.api_url }}/collections/<ins>[:name]</ins>/items</code></pre>
+    </p>
+    <p>For example, the following returns a list of all items in the Arkley collection:</p>
+    <p>
+    <pre><code><a href="{{ data.api_url }}/collections/arkley/items" link-out target="_blank">{{ data.api_url }}/collections/arkley/items</a></code></pre>
+    </p>
+    <p>To return a paginated list of items with richer metadata, add the <code>limit</code> and <code>offset parameters</code> as in the example below, where <code><ins>[:limit]</ins></code> is the number of items to return per page,
+        and <code><ins>[:offset]</ins></code> is the index of the first item on the page (i.e. with a page size of 10, the second page would start with the offset 10).
+    </p>
+    <p>
+    <pre><code>{{ data.api_url }}/collections/<ins>[:name]</ins>/items?limit=<ins>[:limit]</ins>&offset<ins>[:offset]</ins></code></pre>
+    </p>
+    <p>For example, the following returns the first ten items from the the Arkley collection:</p>
+    <p><pre><code><a href="{{ data.api_url }}/collections/arkley/items?limit=10&offset=0" link-out target="_blank">{{ data.api_url}}/collections/arkley/items?limit=10&offset=0</a></code></pre>
+    </div></p>
+
+    <h4 id="item-endpoints">Item Metadata</h4>
+    <p>
+        An "item" in open collection is typically a single piece of content indexed in Open Collections. The content can be, for example, a book, an image, a video, and in some cases can have multiple components (ie. a PDF and an audio file). The <code>/item/</code> endpoint returns data
+    </p>
+
+    <div class="highlight-box yellow">
+        <p>
+            The following request returns the metadata for a specific item, where <code><ins>[:name]</ins></code> is the nickname of the item's parent collection, and <code><ins>[:itemId]</ins> is the item's unique identifier:</code>
+        </p>
+        <p>
+            <pre><code>{{ data.api_url }}/collections/<ins>[:name]</ins>/items/<ins>[:itemId]</ins></code></pre>
+        </p>
+        <p>
+            For example, the following returns the metadata from a single item in the the Arkley collection:
+        </p>
+        <p>
+        <pre><code><a href="{{ data.api_url }}/collections/arkley/item/1.0013125" link-out
+                      target="_blank">{{ data.api_url }}/collections/arkley/item/1.0013125</a></code></pre>
+        </p>
+    </div>
+<br>
+    <p>
+        Tip: You can grab the requisite
+        <ins>[:name]</ins>
+        and
+        <ins>[:itemId]</ins>
+        values from the <code>collection/.../items</code> endpoint.
+    </p>
+
+    <h3 id="search-endpoint">Search Endpoint</h3>
+    <p>The Open Collections <code>/search/[:api_version]/</code> endpoint returns search results and metadata from the system's ElasticSearch index, where [:api_version] is the version of ElasticSearch syntax to use (currently we are supporting {{ data.api_version }}). The endpoint supports GET requests with a limited subset of parameters, and more complete access to the full ElasticSearch feature set via POST request (see Advanced Usage).</p>
+
+<h4 id="basic-search">Basic Searching (GET Requests)</h4>
+<div class="highlight-box yellow">
+        <p>This endpoint returns a basic set of search results, and [:query] is your query string. The endpoint supports basic strings and
+            <a href="http://lucene.apache.org/core/2_9_4/queryparsersyntax.html">Lucene query syntax</a>:</p>
+        <p><pre><code>{{ data.search_endpoint }}?q=[:query]</code></pre></p>
+    <p>For example, the following will submit a search for the term "cat":</p>
+    <p><pre><code><a href="{{ data.search_endpoint }}?q=cat" link-out target="_blank">{{ data.search_endpoint }}?q=cat</a></code></pre></p>
+
+        <p>To limit your search to a specific collection, you can use the 'index' parameter where [:index] is the nickname of the collection or collections you would like to search (multiple collection nicknames can be combined with commas):</p>
+        <p><pre><code>{{ data.search_endpoint }}?q=[:query]&index=[:index]</code></pre></p>
+    <p>For example, the following will submit a search for the term "cat" in the Tremaine Arkley Croquet Collections and The Alice Arm and Anyox
+        Herald newspaper collection:</p>
+    <p><pre><code><a href="{{ data.search_endpoint }}?q=cat&index=arkley,aaah" link-out target="_blank">{{ data.search_endpoint }}?q=cat&index=arkley</a></code></pre></p>
+
+        <p>To limit your search to a specific metadata value, you can use the 'term' parameter where [:field] is the name of the metadata field, and [:term] is the value you would like to match. Multiple fields and terms can be specified, separated by semicolons:</p>
+        <p><pre><code>{{ data.search_endpoint }}?q=[:query]&term=[:field],[:term];[:field],[:term]</code></pre></p>
+    <p>For example, the following will submit a search for the term "cat" where "Type" is "Still Image" and "creator" is "Kull, Bob". Note that adding ".raw" to the field name enforces an exact match, and that the values are
+        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURI" link-out>URI-encoded</a> to prevent errors:</p>
+    <p><pre><code><a href="{{ data.search_endpoint }}?q=cat&term=creator.raw,Kull%2C%20Bob;type.raw,Still%20Image" link-out target="_blank">{{ data.search_endpoint }}?q=cat&term=creator.raw,Kull%2C%20Bob;type.raw,Still%20Image</a></code></pre></p>
+</div>
+<br>
+<p>See the full
+    <a href="{{ base_url }}/docs#reference-search-params"> list of supported parameters</a> in the API Reference or at <code>
+        <a href="{{ data.api_url }}/search/help">{{ data.api_url }}/search/help</a></code>. Note that parameter values should be
+    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURI" link-out>
+        URI-encoded
+    </a> to avoid errors.</p>
+<h4 id="advanced-usage">Advanced Usage</h4>
+<p>For more advanced use cases, the Open Collections Search API provides access to the full power of its underlying
+    <a href="https://www.elastic.co" link-out>ElasticSearch</a>
+    index, including aggregations (useful for data visualization and analysis), advanced searching and filtering,
+    geolocation, and much more (everything except custom script fields).
+</p>
+<p class="highlight-box yellow">
+    ElasticSearch version {{ data.api_version }} Query DSL objects can be submitted to the
+    <code>/search/{{ data.api_version }}/</code> endpoint via POST request and can be combined with the Open Collections
+    search URI parameters. Query DSL object values will take precedence over URI parameter values.
+</p>
+<p>Learn more about the ElasticSearch API:</p>
+<ul>
+    {#<li><a href="https://www.elastic.co/guide/en/elasticsearch/guide/current/search-in-depth.html" link-out>Search#}
+    {#In Depth</a></li>#}
+    <li>
+        <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/search.html" link-out>Search API
+            documentation
+        </a>
+    </li>
+    <li>
+        <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html" link-out>Query DSL
+            documentation
+        </a>
+    </li>
+    <li>
+        <a href="https://www.elastic.co/guide/en/elasticsearch/guide/current/aggregations.html"
+           link-out>Aggregations
+        </a>
+    </li>
+    <li>
+        <a href="https://www.elastic.co/guide/en/elasticsearch/guide/current/languages.html" link-out>Dealing with
+            Human Language
+        </a>
+    </li>
+    <li>
+        <a href="https://www.elastic.co/guide/en/elasticsearch/guide/current/geoloc.html" link-out>Geolocation</a>
+    </li>
+</ul>
 </div>
