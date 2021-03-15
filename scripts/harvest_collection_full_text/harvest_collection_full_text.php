@@ -1,6 +1,6 @@
 <?php
     // Replace this with your API Key
-    $apiKey = 'ac40e6c2cb345593ed1691e0a8b601bba398e42d85f81f893c5ab709cec63c6c';
+    $apiKey = '';
 
     // Collection we want to harvest
     $collection = 'darwin';
