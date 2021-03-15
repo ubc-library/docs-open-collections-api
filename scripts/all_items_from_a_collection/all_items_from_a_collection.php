@@ -1,7 +1,7 @@
 <?php
     $apiURL = 'https://oc-index.library.ubc.ca/';
-    // Replace this with your API Key
-    $apiKey = 'ac40e6c2cb345593ed1691e0a8b601bba398e42d85f81f893c5ab709cec63c6c';
+    // Your API Key Here:
+    $apiKey = '';
 
     // Collection to get all items from
     $collection = 'darwin';
