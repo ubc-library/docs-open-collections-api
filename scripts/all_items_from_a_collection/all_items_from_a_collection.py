@@ -30,7 +30,7 @@ for x in range(0, pages):
 # Store all the items so we can print them out later
 items = []
 for itemId in itemIds:
-    itemUrl = ocApiUrl + '/collections/' + collection + '/items/' + itemId
+    itemUrl = ocApiUrl + '/collections/' + collection + '/items/' + itemId + '?api_key=' + apiKey
     apiResponse = requests.get(itemUrl).json()
     item = apiResponse['data']
     items.append(item)
