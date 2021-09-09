@@ -29,7 +29,7 @@ for x in range(0, pages):
 
 items = []
 for itemId in itemIds:
-    itemUrl = ocApiUrl + '/collections/' + collection + '/items/' + itemId
+    itemUrl = ocApiUrl + '/collections/' + collection + '/items/' + itemId + '?api_key=' + apiKey
     apiResponse = requests.get(itemUrl).json()
     item = apiResponse['data']
     itemStore = dict()
